@@ -8154,6 +8154,11 @@ WM_LABELS.push(['The Ashen Citadel',334,31,1],['Arena Grounds',67,27,1]);try{WM_
 // ===== STAGE 4 part E: pet walk frames advance with distance travelled (no foot gliding) =====
 {const _dp2=drawPet;let lx=0,ly=0,ph=0;window.__petPh26=0;drawPet=function(){const moved=Math.hypot(PET.x-lx,PET.y-ly);if(PET.mv&&moved<80)ph+=moved/5.5;lx=PET.x;ly=PET.y;window.__petPh26=ph;
   const ot=PET.t;if(PET.mv)PET.t=ph*(v5eOn()?75:140)/1000;try{return _dp2.apply(this,arguments);}finally{PET.t=ot;}};}
+// stat-point cards (span 2) keep a one-line row layout inside the new tan window
+{const st=document.createElement('style');st.textContent=`#dlg.dock .skc[style*="span 2"]{display:grid!important;grid-template-columns:30px 1fr auto 44px;grid-template-rows:auto!important;gap:6px;align-items:center;min-height:40px!important;padding:4px 8px!important}
+#dlg.dock .skc[style*="span 2"]::after{display:none!important}
+#dlg.dock .skc[style*="span 2"] b{grid-row:auto!important}
+#dlg.dock .skc[style*="span 2"] button{position:static!important;width:44px;height:30px;padding:0!important;font-size:18px}`;document.head.appendChild(st);}
 
 
 //@@HIP6END@@

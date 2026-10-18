@@ -238,9 +238,9 @@ input,textarea{-webkit-user-select:text;user-select:text}
 #dlg .pX{position:absolute;top:6px;right:6px;width:44px;height:44px;min-width:44px;padding:0;margin:0;font-size:22px;line-height:40px;text-align:center;background:#5a2a12;color:#ffe9b0;border:2px solid #1a1008;box-shadow:inset 0 0 0 1px #c8804a;border-radius:6px;z-index:5}
 #dlg>h2:first-of-type{padding-right:50px}
 </style>
-<script>/* v22.6 update check */(function(){var V='29.0.0';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
+<script>/* v22.6 update check */(function(){var V='30.0.0';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
 function mk(){var d=document.createElement('div');d.id='pwGate';d.style.cssText='position:fixed;inset:0;z-index:2147483647;background:#1a1008;display:flex;align-items:center;justify-content:center;font:16px sans-serif;color:#ffe27a';
-d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v29.0 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
+d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v30.0 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
 document.body.appendChild(d);['pointerdown','touchstart','keydown','mousedown'].forEach(function(t){d.addEventListener(t,function(e){e.stopPropagation();},true);});
 document.getElementById('pwF').addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('pwI').value;crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){var x=Array.from(new Uint8Array(b)).map(function(n){return n.toString(16).padStart(2,'0')}).join('');
 if(x===H){try{localStorage.setItem(K,H);}catch(e){}d.remove();}else{document.getElementById('pwE').textContent='Wrong password';document.getElementById('pwI').value='';}});});}
@@ -8554,6 +8554,30 @@ function hipGate29(){try{const hg=window.__HIPGATE;if(!hg||IL29.gate)return;
 }catch(e){IL29.gerr=e.message;console.warn('hipGate29',e);}}
 {const _hgb=hipGateBuild;hipGateBuild=function(){const r=_hgb.apply(this,arguments);hipGate29();return r;};}
 hipGate29();
+
+
+// ---- v30.0 a: the tree line along row 44 (west of Ilios) becomes one continuous stone wall joined to the Ilios SW corner tower; road gap stays open; banners hung on the wall face ----
+var W30={log:[]};
+(function wall30(){try{
+ const Y=44,X0=29,X1=108,G0=70,G1=82;
+ // tiles: trees -> wall (gap x70..82 stays paved road)
+ let n=0;for(let x=X0;x<=X1;x++){if(x>=G0&&x<=G1)continue;const i=Y*MW+x;if(map[i]===TREE||map[i]===BUSH||map[i]===G||map[i]===WALL){map[i]=WALL;n++;}}W30.tiles=n;
+ // remove the baked tree sprites of that line
+ let rm=0;for(let r=42;r<=47&&r<OBJ_ROWS.length;r++){const row=OBJ_ROWS[r];for(let i=row.length-1;i>=0;i--){const o=row[i];if(!o.img||o.w!==85)continue;const cx0=Math.floor((o.x+o.w/2)/T),cy0=Math.floor((o.sy-2)/T);if(cx0>=X0-1&&cx0<=X1+1&&cy0>=43&&cy0<=46){row.splice(i,1);rm++;}}}W30.trees=rm;
+ NB_N=-1;try{mm.width=MW;mm.height=MH;for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){mmx.fillStyle=TILE_COL[getT(x,y)]||'#000';mmx.fillRect(x,y,1,1);}}catch(e){}try{WM_BASE=null;}catch(e){}
+ const put=(img,left,bottom)=>{const o={img,x:Math.round(left),y:Math.round(bottom-img.height),sy:bottom-2,w:img.width,h:img.height};OBJ_ROWS[Math.min(OBJ_ROWS.length-1,Math.max(0,Math.floor(o.sy/T)))].push(o);return o;};
+ function build(){const sh=V5R.ilios_walls_v5;if(!sh||!sh.im.complete||!sh.im.naturalWidth)return false;
+  const cache={};const piece=(name,sc)=>{const k=name+'@'+sc;if(cache[k])return cache[k];const f=sh.f[name],c=document.createElement('canvas');c.width=Math.round(f[2]*sc);c.height=Math.round(f[3]*sc);const g=c.getContext('2d');g.imageSmoothingEnabled=false;g.drawImage(sh.im,f[0],f[1],f[2],f[3],0,0,c.width,c.height);return cache[k]=c;};
+  const hs=(x,y)=>((x*73856093)^(y*19349663))>>>0;const SC=1.25,STR=['wall_straight_a','wall_straight_a','wall_straight_b','wall_straight_c'];const B=(Y+1)*T;
+  for(let x=X0;x<=X1;x++){if(x>=G0&&x<=G1)continue;put(piece(STR[hs(x,Y)%4],SC),x*T,B);}
+  const tb=piece('tower_body',SC),tc=piece('tower_cap',SC);
+  for(const l of [X0-1,40,53,G0-2,G1+1,96]){put(tb,l*T,B);put(tc,l*T,B-tb.height+6);}
+  // the old red/gold hanging banners: hang them on the wall face instead of floating on the grass
+  let bn=0;const want=[36,47,58,64,88,100,104,92];for(let r=0;r<OBJ_ROWS.length;r++){const row=OBJ_ROWS[r];for(let i=row.length-1;i>=0;i--){const o=row[i];if(!o.img||o.w!==24||o.h!==44)continue;const cx0=Math.floor((o.x+o.w/2)/T),cy0=Math.floor((o.sy-2)/T);if(cx0<28||cx0>110||cy0<40||cy0>56)continue;row.splice(i,1);const x=want[bn%want.length];bn++;put2(o.img,x);}}
+  function put2(img,x){const o={img,x:Math.round(x*T+(T-img.width)/2),y:Math.round(B-8-img.height),sy:B+1,w:img.width,h:img.height};OBJ_ROWS[Math.floor(o.sy/T)].push(o);}
+  W30.banners=bn;W30.built=1;return true;}
+ if(!build()){const sh=V5R.ilios_walls_v5;if(sh)sh.im.addEventListener('load',()=>{try{build();}catch(e){W30.err=String(e&&e.stack||e);}});}
+}catch(e){W30.err=e.message+' '+(e.stack||'').split('\n')[1];console.warn('wall30',e);}})();
 
 
 //@@HIP6END@@

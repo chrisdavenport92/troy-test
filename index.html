@@ -238,9 +238,9 @@ input,textarea{-webkit-user-select:text;user-select:text}
 #dlg .pX{position:absolute;top:6px;right:6px;width:44px;height:44px;min-width:44px;padding:0;margin:0;font-size:22px;line-height:40px;text-align:center;background:#5a2a12;color:#ffe9b0;border:2px solid #1a1008;box-shadow:inset 0 0 0 1px #c8804a;border-radius:6px;z-index:5}
 #dlg>h2:first-of-type{padding-right:50px}
 </style>
-<script>/* v22.6 update check */(function(){var V='24.0.0';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
+<script>/* v22.6 update check */(function(){var V='25.0.0';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
 function mk(){var d=document.createElement('div');d.id='pwGate';d.style.cssText='position:fixed;inset:0;z-index:2147483647;background:#1a1008;display:flex;align-items:center;justify-content:center;font:16px sans-serif;color:#ffe27a';
-d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v24.0 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
+d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v25.0 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
 document.body.appendChild(d);['pointerdown','touchstart','keydown','mousedown'].forEach(function(t){d.addEventListener(t,function(e){e.stopPropagation();},true);});
 document.getElementById('pwF').addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('pwI').value;crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){var x=Array.from(new Uint8Array(b)).map(function(n){return n.toString(16).padStart(2,'0')}).join('');
 if(x===H){try{localStorage.setItem(K,H);}catch(e){}d.remove();}else{document.getElementById('pwE').textContent='Wrong password';document.getElementById('pwI').value='';}});});}
@@ -7851,6 +7851,54 @@ document.addEventListener('click',e=>{if(window.__tapEq24&&Date.now()-window.__t
   for(const base of nodes.filter(n=>GATHER[n.node].sk!=='fishing')){let k=0;for(let tries=0;tries<200&&k<1;tries++){const a=Math.random()*6.283,r=4+Math.random()*6;const tx=Math.floor(base.x/T+Math.cos(a)*r),ty=Math.floor(base.y/T+Math.sin(a)*r);
     if(!land(getT(tx,ty)))continue;const x=(tx+0.5)*T,y=(ty+0.5)*T;if(blocked(x,y,14)||!far(x,y,3))continue;NPCS.push(Object.assign({},base,{x,y,t:0}));k++;added++;}}
   window.__nodes24=added;}catch(e){window.__e24c=e.message}};})();
+
+// ===== v25.0 "Stage 3": stat points, creature dex, tan Aros-style windows =====
+function ST25(){const h=H23();h.st=h.st||{s:0,r:0,d:0,h:0};return h.st;}
+function stEarned25(){return Math.max(0,(P.lvl-1)*2);}
+function stSpent25(){const t=ST25();return t.s+t.r+t.d+t.h;}
+function stFree25(){return Math.max(0,stEarned25()-stSpent25());}
+// effects: Strength +2 melee attack, Ranged +2 ranged attack, Defence +1 def, HP +6 max HP per point
+{const _a=pAtk;pAtk=function(){return _a()+ST25().s*2;};}
+{const _d=pDef;pDef=function(){return _d()+ST25().d;};}
+{const _m=maxHp;maxHp=function(){return _m()+ST25().h*6;};}
+{const _r=rSum;rSum=function(f){return _r(f)+(f==='ratk'?ST25().r*2:0);};}
+function stAdd25(k){if(stFree25()<=0){toast('No stat points left');return;}ST25()[k]++;save();toast('+1 '+({s:'Strength',r:'Ranged',d:'Defence',h:'HP'})[k]);openStats25();}
+function stReset25(){const t=ST25();if(P.coins<500){toast('Resetting costs 5s');return;}P.coins-=500;t.s=t.r=t.d=t.h=0;save();toast('Stat points refunded');openStats25();}
+function openStats25(){const t=ST25(),f=stFree25();const row=(k,n,ic,eff)=>'<div class="skc" style="grid-column:span 2"><b>'+ic+'</b><span>'+n+' <small>('+eff+')</small></span><em>'+t[k]+'</em><button class="pb" style="padding:2px 10px" data-a="st25" data-v="'+k+'"'+(f>0?'':' disabled')+'>+</button></div>';
+  openPanel('<h2>Stats</h2><p><b style="color:#ffd75a">'+f+'</b> point'+(f===1?'':'s')+' to spend <small>(2 per level)</small></p><div class="sk5" style="grid-template-columns:1fr">'
+   +row('s','Strength','\u2694\uFE0F','+2 melee attack each')+row('r','Ranged','\u{1F3F9}','+2 ranged attack each')+row('d','Defence','\u{1F6E1}\uFE0F','+1 defence each')+row('h','HP','\u2764\uFE0F','+6 max HP each')+'</div>'
+   +'<p><small>Attack '+Math.round(pAtk())+' \u00B7 Defence '+Math.round(pDef())+' \u00B7 Max HP '+maxHp()+'</small></p><div class="row"><button class="pb" data-a="st25r">Reset points (5s)</button></div>');}
+// creature dex: kills per type
+function DEX25(){const h=H23();h.dex=h.dex||{};return h.dex;}
+{const _k=killMob;killMob=function(m){const r=_k.apply(this,arguments);try{if(m&&m.type){const d=DEX25();d[m.type]=(d[m.type]||0)+1;}}catch(e){}return r;};}
+function openDex25(){const d=DEX25();const ks=Object.keys(MOBS).filter(k=>MOBS[k].name&&!MOBS[k].temp&&MOBS[k].lv).sort((a,b)=>MOBS[a].lv[0]-MOBS[b].lv[0]);const seen=ks.filter(k=>d[k]>0).length;
+  let h='<h2>Creature Dex</h2><p><small>Discovered <b>'+seen+'</b> / '+ks.length+' \u00B7 total kills <b>'+Object.values(d).reduce((a,b)=>a+b,0)+'</b></small></p><div class="dex25">';
+  for(const k of ks){const m=MOBS[k],n=d[k]||0;h+='<div class="dc25'+(n?'':' un')+'"><b>'+(n?m.name:'???')+'</b><small>'+(n?('Lv '+m.lv[0]+(m.lv[1]!==m.lv[0]?'-'+m.lv[1]:'')+(m.boss||m.mini?' \u2605':'')):'Lv ?')+'</small><em>'+n+'</em></div>';}
+  openPanel(h+'</div>');}
+{const old=Object.getOwnPropertyDescriptor(window,'__dummy');}
+// tabs + icons
+(function(){const mk=(draw)=>{const c=document.createElement('canvas');c.width=c.height=12;const g=c.getContext('2d');draw(g);return c.toDataURL();};
+  TAB_ICONS.stats=mk(g=>{g.fillStyle='#1a1008';g.fillRect(1,1,10,10);g.fillStyle='#ffd23a';g.fillRect(2,7,2,3);g.fillRect(5,4,2,6);g.fillRect(8,2,2,8);});
+  TAB_ICONS.dex=mk(g=>{g.fillStyle='#1a1008';g.fillRect(2,1,8,10);g.fillStyle='#e8c88a';g.fillRect(3,2,6,8);g.fillStyle='#7a4a1a';g.fillRect(4,3,4,2);g.fillRect(4,6,4,1);g.fillRect(4,8,3,1);});
+  const i=TABS.findIndex(t=>t[0]==='skills');TABS.splice(i+1,0,['stats','Stats',()=>openStats25()],['dex','Creature Dex',()=>openDex25()]);})();
+// stat actions via panel buttons (inline-free: delegate)
+document.addEventListener('click',function(e){const b=e.target&&e.target.closest?e.target.closest('[data-a="st25"],[data-a="st25r"]'):null;if(!b||b.disabled)return;e.stopImmediatePropagation();e.preventDefault();if(window.__st25){window.__st25=0;return;}if(b.dataset.a==='st25')stAdd25(b.dataset.v);else stReset25();},true);
+document.addEventListener('pointerup',function(e){const b=e.target&&e.target.closest?e.target.closest('[data-a="st25"],[data-a="st25r"]'):null;if(!b||b.disabled||e.pointerType==='mouse')return;e.stopImmediatePropagation();window.__st25=1;setTimeout(()=>{window.__st25=0},700);if(b.dataset.a==='st25')stAdd25(b.dataset.v);else stReset25();},true);
+// level-up badge on the HUD level box
+setInterval(()=>{try{const lv=document.getElementById('h23lv');if(!lv)return;const f=stFree25();let b=document.getElementById('st25b');if(f>0){if(!b){b=document.createElement('i');b.id='st25b';b.style.cssText='position:absolute;right:-6px;top:-8px;min-width:16px;height:16px;border-radius:8px;background:#e0402a;color:#fff;font:bold 11px sans-serif;text-align:center;line-height:16px;border:1px solid #fff;pointer-events:none';lv.style.position='relative';lv.appendChild(b);}b.textContent=f;}else if(b)b.remove();}catch(e){}},700);
+// ---- tan parchment window theme + dex grid ----
+{const st=document.createElement('style');st.textContent=`
+#dlg.dock,#dlg.mea{background:linear-gradient(#e4cf9e,#d2b67a)!important;color:#3a2410!important}
+#dlg.dock h2{color:#5a3412!important;text-shadow:none!important}
+#dlg.dock .item,#dlg.dock .skc,#dlg.dock .bslot{background:#f1e2b8!important;border-color:#8a6a34!important;color:#3a2410!important}
+#dlg.dock .item *,#dlg.dock .item b,#dlg.dock .item small{color:#3a2410!important;opacity:1!important}
+#dlg.dock .item small,#dlg.dock p,#dlg.dock small{color:#5a4020!important}
+#dlg.dock .tabbar{background:#b99458!important}
+#dlg.dock .tb{background:#d9bf86!important;border-color:#7a5a2a!important}#dlg.dock .tb.on{background:#f7e9bf!important}
+#dlg.dock .price,#dlg.dock em{color:#6a3a10!important}
+.dex25{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}.dc25{background:#f1e2b8;border:2px solid #8a6a34;border-radius:4px;padding:3px 5px;text-align:left;position:relative;color:#3a2410}.dc25.un{opacity:.55}.dc25 b{display:block;font-size:12px}.dc25 small{font-size:10px}.dc25 em{position:absolute;right:5px;top:3px;font-style:normal;font-weight:bold;color:#6a3a10}
+`;document.head.appendChild(st);}
+Object.assign(window,{stAdd25,stReset25});
 
 //@@HIP6END@@
 // ---------- v22.5: music batch 3 wiring (interiors, hippodrome, chariot mount loops, town/hub market ambience) ----------

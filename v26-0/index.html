@@ -8143,6 +8143,18 @@ function wmMarkers26(){const out=[];const giv=new Set();for(const q of QUESTS)gi
 for(const l of WM_LABELS){const d=L26dx(l[1],l[2]);if(d)l[1]+=d;}
 WM_LABELS.push(['The Ashen Citadel',334,31,1],['Arena Grounds',67,27,1]);try{WM_BASE=null;}catch(e){}
 
+// ===== STAGE 4 part D: quest flow, no back-and-forth on the shore: fisherman -> shack(1,2) -> sentry(3..6) -> Ilios fields =====
+(function(){const g=(i,o)=>Object.assign(QUESTS[i],o);
+  g(2,{giver:'shack',chain:'same',ask:"A sea chest from your ship washed up by the wreck to the south. Go and see what the sea left you, then come straight back."});
+  g(4,{chain:'same',done:"The cove is quieter already. Grow stronger, Lv 5, armed and armored, and I'll open the road to Ilios. But first: the old cave south of the dunes. Bats."});
+  g(5,{giver:'sentry',chain:'same',ask:"South of the dunes there's a cave mouth in the cliff: the Hollow of Echoes. Smugglers used it to slip tin past the Achaean ships. Now black bats nest in it. Bring me 5 Bat Wings.",done:"Good wings. A cape from your ship's sail for you, stitched by the watch. Wear it."});
+  g(6,{giver:'sentry',chain:'same',done:"The Hollow is quiet! The smugglers left a few things behind in there. Take one, on me. Now the road to Ilios is yours."});
+  window.__QFLOW26=QUESTS.slice(0,10).map(q=>q.giver);})();
+
+// ===== STAGE 4 part E: pet walk frames advance with distance travelled (no foot gliding) =====
+{const _dp2=drawPet;let lx=0,ly=0,ph=0;window.__petPh26=0;drawPet=function(){const moved=Math.hypot(PET.x-lx,PET.y-ly);if(PET.mv&&moved<80)ph+=moved/5.5;lx=PET.x;ly=PET.y;window.__petPh26=ph;
+  const ot=PET.t;if(PET.mv)PET.t=ph*(v5eOn()?75:140)/1000;try{return _dp2.apply(this,arguments);}finally{PET.t=ot;}};}
+
 
 //@@HIP6END@@
 // ---------- v22.5: music batch 3 wiring (interiors, hippodrome, chariot mount loops, town/hub market ambience) ----------

@@ -238,9 +238,9 @@ input,textarea{-webkit-user-select:text;user-select:text}
 #dlg .pX{position:absolute;top:6px;right:6px;width:44px;height:44px;min-width:44px;padding:0;margin:0;font-size:22px;line-height:40px;text-align:center;background:#5a2a12;color:#ffe9b0;border:2px solid #1a1008;box-shadow:inset 0 0 0 1px #c8804a;border-radius:6px;z-index:5}
 #dlg>h2:first-of-type{padding-right:50px}
 </style>
-<script>/* v22.6 update check */(function(){var V='25.0.0';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
+<script>/* v22.6 update check */(function(){var V='26.0.0';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
 function mk(){var d=document.createElement('div');d.id='pwGate';d.style.cssText='position:fixed;inset:0;z-index:2147483647;background:#1a1008;display:flex;align-items:center;justify-content:center;font:16px sans-serif;color:#ffe27a';
-d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v25.0 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
+d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v26.0 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
 document.body.appendChild(d);['pointerdown','touchstart','keydown','mousedown'].forEach(function(t){d.addEventListener(t,function(e){e.stopPropagation();},true);});
 document.getElementById('pwF').addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('pwI').value;crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){var x=Array.from(new Uint8Array(b)).map(function(n){return n.toString(16).padStart(2,'0')}).join('');
 if(x===H){try{localStorage.setItem(K,H);}catch(e){}d.remove();}else{document.getElementById('pwE').textContent='Wrong password';document.getElementById('pwI').value='';}});});}
@@ -317,7 +317,7 @@ const SHELL_DROP_CHANCE=0.75; // crabs drop Sea Shells while the shell quest is 
 const BEACH_XP_MULT=0.3; // beach mobs give reduced XP: 5 beach quests (+their kills) ~ Lv3, then grind beach mobs to Lv5
 let GATE_X=45; // x of the Sigeion Shore barricade (see GATE_REQS)
 const QUEST_SAVE_VER=4;
-let bagMigrated=''; const BAG_SLOTS=20; // inventory stacks (equipped gear doesn't count)
+let bagMigrated=''; const BAG_SLOTS=40; // inventory stacks (equipped gear doesn't count)
 const QUICK_CD=1.5, QUICK_LONGPRESS=500; // quick-use healing slot: cooldown (s), long-press to pick (ms)
 // ---- Zone gates: level + equipped gear tier (item req). rect = barrier tiles [x0,y0,x1,y1]; side = where the locked zone lies ----
 const GATE_REQS=[
@@ -7819,8 +7819,7 @@ function tryRestore24(){const h=H23();const t=h.try||{};for(const s in t)P.eq[s]
 document.addEventListener('click',function(e){const it=e.target&&e.target.closest?e.target.closest('[data-k24]'):null;if(!it||!V().tester)return;e.stopImmediatePropagation();try24(it.getAttribute('data-k24'));},true);
 {const _tm=testerUnlock19;testerUnlock19=function(){const r=_tm.apply(this,arguments);try{P.sk=P.sk||{};P.sk.ranged=Math.max(P.sk.ranged||0,SKILL_XP[SKILL_MAX]);P.coins=Math.max(P.coins||0,1e8);}catch(e){}return r;};}
 // ===== Denser spawns across the starting areas (existing mob types only; more types need art) =====
-(function(){let done=false;const EXTRA=[['crab',66,86,16,19,5],['crab',70,82,24,27,4],['viperling',51,64,27,40,4],['viper',51,64,27,40,3],['bandit',66,79,34,40,4],['bandit',66,79,28,33,3],
-  ['piglet',5,15,23,30,3],['piglet',32,42,26,30,3],['foxkit',3,13,24,30,3],['foxkit',28,42,21,25,3],['wolfcub',4,40,33,46,4],['boar',5,15,23,30,2],['boar',32,42,26,30,2],['wolf',2,45,32,47,4],['crab',69,86,16,19,3]];
+(function(){let done=false;const EXTRA=[['crab',205,275,52,100,9],['crab',200,262,100,135,6],['viperling',190,235,52,85,5],['viper',200,250,86,130,5],['bandit',211,255,108,130,4],['bandit',215,260,55,80,3],['foxkit',89,136,67,82,4],['wolfcub',16,50,73,98,4],['boar',102,136,83,98,3],['piglet',16,50,73,98,3],['wolf',102,136,83,98,3],['wolf',30,70,56,70,3]];
   const _u=update;update=function(dt){_u.apply(this,arguments);if(done||typeof makeMob!=='function'||!mobs.length)return;done=true;try{if(V().h23&&V().h23.sp24)return;let n=0;for(const s of EXTRA){if(!MOBS[s[0]])continue;SPAWNS.push(s);for(let i=0;i<s[5];i++){const m={type:s[0],sp:s};makeMob(m);mobs.push(m);n++;}}window.__extraMobs24=n;}catch(e){window.__e24b=e.message}};})();
 // ===== Equip by tapping (matching paperdoll slot lights up, tap it to equip) or by dragging the item onto its slot =====
 {const st=document.createElement('style');st.textContent='.eqgrid .bslot.lit24,.pdoll .bslot.lit24{outline:3px solid #ffe27a;box-shadow:0 0 12px 3px #ffd23a;animation:lit24 .7s infinite alternate}@keyframes lit24{to{box-shadow:0 0 20px 6px #fff2a0}}#drag24{position:fixed;z-index:99999;width:40px;height:40px;margin:-20px 0 0 -20px;pointer-events:none;background-size:contain;background-repeat:no-repeat;image-rendering:pixelated;opacity:.9}';document.head.appendChild(st);}
@@ -7899,6 +7898,251 @@ setInterval(()=>{try{const lv=document.getElementById('h23lv');if(!lv)return;con
 .dex25{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}.dc25{background:#f1e2b8;border:2px solid #8a6a34;border-radius:4px;padding:3px 5px;text-align:left;position:relative;color:#3a2410}.dc25.un{opacity:.55}.dc25 b{display:block;font-size:12px}.dc25 small{font-size:10px}.dc25 em{position:absolute;right:5px;top:3px;font-style:normal;font-weight:bold;color:#6a3a10}
 `;document.head.appendChild(st);}
 Object.assign(window,{stAdd25,stReset25});
+
+// ===== STAGE 4 (v26.0) part A: world layout (runtime re-lay of the final map; reversible via L26 flag) =====
+const L26={A:{x0:25,x1:171,dx:84},B:{x0:172,x1:255,dx:-147},Y1:44,log:[]};
+function L26dx(tx,ty,id){if(id==='gatewarden'&&tx>=55&&tx<=90&&ty<=53)return L26.A.dx;if(ty<0||ty>L26.Y1+0.999)return 0;if(tx>=L26.A.x0&&tx<L26.A.x1+1)return L26.A.dx;if(tx>=L26.B.x0&&tx<L26.B.x1+1)return L26.B.dx;return 0;}
+function relayout26(){try{
+  const W=MW,H=MH;const snap=map.slice(),snapU=under.slice();
+  const mvT=(x0,x1,dx)=>{for(let y=0;y<=L26.Y1;y++)for(let x=x0;x<=x1;x++){const i=y*W+x,j=y*W+x+dx;map[j]=snap[i];under[j]=snapU[i];}};
+  mvT(L26.A.x0,L26.A.x1,L26.A.dx);mvT(L26.B.x0,L26.B.x1,L26.B.dx);
+  const NATW=new Set([G,SAND,TREE,BUSH,ROCK,CROP,ASH,DTREE,DEADT,STONE,WEB,WALL,BOULDER,FENCE]);
+  const road=(x0,x1,y0,y1)=>{for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){const t=map[y*W+x];if(t!==WATER&&t!==HOUSE&&t!==PROP){map[y*W+x]=PATH;}}};
+  road(154,166,44,72);road(144,192,67,72);        // Ilios south gate road down to the beach
+  road(70,82,30,44);            // main road continues up to the arena
+  road(98,112,22,28);           // walkway between the arena grounds and the Ilios west gate
+  const sh=(o,kx,ky,kt)=>{const tx=o[kx]/(kt?1:T),ty=o[ky]/(kt?1:T);const d=L26dx(tx,ty,o.id);if(d){o[kx]+=d*(kt?1:T);return d;}return 0;};
+  let n=0;
+  for(const o of NPCS){if(sh(o,'x','y'))n++;}
+  for(const arr of [HOUSES,TENTS]){for(const r of arr){const d=L26dx(r[0],r[1]);if(d){r[0]+=d;r[2]+=d;n++;}}}
+  for(const p of PROPS){const d=L26dx(p.x,p.y);if(d){p.x+=d;n++;}}
+  for(const p of PROPS18){const d=L26dx(p[1],p[2]);if(d){p[1]+=d;n++;}}
+  for(const o of DECOR){const d=L26dx(o.x/T,o.y/T);if(d)o.x+=d*T;}
+  for(const o of LIGHTS){const d=L26dx(o.x/T,o.y/T);if(d){o.x+=d*T;if(o.wx!==undefined)o.wx+=d*T;}}
+  for(const o of SMOKERS){const d=L26dx(o.x/T,o.y/T);if(d)o.x+=d*T;}
+  for(const o of DYN){const dsc=Object.getOwnPropertyDescriptor(o,'x');if(dsc&&dsc.get)continue;const d=L26dx(o.x/T,(typeof o.y==='number'?o.y:o.sy)/T);if(d){o.x+=d*T;if(typeof o.fx==='function'){const f=o.fx,dd=d*T;o.fx=function(){cx.save();cx.translate(dd,0);try{f.apply(this,arguments);}finally{cx.restore();}};}L26.dyn=(L26.dyn||0)+1;}}
+  for(let r=0;r<Math.min(OBJ_ROWS.length,48);r++)for(const o of OBJ_ROWS[r]){const d=L26dx((o.x+o.w/2)/T,o.sy/T);if(d){o.x+=d*T;L26.obj=(L26.obj||0)+1;}}
+  for(const l of WORLD_LABELS){const d=L26dx(l[2]/T,l[3]/T);if(d)l[2]+=d*T;}
+  for(const h of HERMS){const d=L26dx(h[3],h[4]);if(d)h[3]+=d;}
+  for(const s of SPAWNS){const d=L26dx(s[1],s[3]);if(d){s[1]+=d;s[2]+=d;}}
+  for(const m of mobs){const d=L26dx(m.x/T,m.y/T);if(d){m.x+=d*T;m.hx+=d*T;}}
+  for(const g of GATE_REQS){const d=L26dx(g.rect[0],g.rect[1]);if(d){g.rect[0]+=d;g.rect[2]+=d;}}
+  {const d=L26dx(ARENA.cx/T,ARENA.cy/T);if(d)ARENA.cx+=d*T;}
+  for(const o of [INN_SPOT,SPAWN]){const d=L26dx(o.x/T,o.y/T);if(d)o.x+=d*T;}
+  if(typeof CHAR19!=='undefined'&&CHAR19){const d=L26dx(CHAR19.x/T,CHAR19.y/T);if(d){CHAR19.x+=d*T;CHAR19.x0+=d*T;CHAR19.x1+=d*T;}}
+  try{for(const z of (window.__ZONES||[])){const d=L26dx(z.cx,z.cy);if(d)z.cx+=d;}}catch(e){}
+  try{if(typeof ZONES_DEF!=='undefined'&&ZONES_DEF)for(const z of ZONES_DEF){const d=L26dx(z.r[0],z.r[1]);if(d){z.r[0]+=d;z.r[2]+=d;}}}catch(e){}
+  {const gw=NPCS.find(o=>o.id==='gatewarden');if(gw){gw.x+=14*T;gw.y=45.6*T;}}
+  L26.moved=n;NB_N=-1;
+  // redraw minimap canvas
+  try{mm.width=MW;mm.height=MH;for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){mmx.fillStyle=TILE_COL[getT(x,y)]||'#000';mmx.fillRect(x,y,1,1);}}catch(e){L26.log.push('mm '+e.message);}
+  L26.ok=1;}catch(e){L26.err=e.message+' '+(e.stack||'').split('\n')[1];}}
+// beach: shorten by a third (west third becomes meadow), pull spawns inward
+function beach26(){try{const W=MW;let n=0;
+  for(let y=51;y<=137;y++)for(let x=147;x<=187;x++){const i=y*W+x;if(map[i]===SAND){map[i]=G;n++;}}
+  for(const s of SPAWNS){if(s[3]>=51&&s[4]<=137&&s[1]<188&&s[2]>=188&&MOBS[s[0]]&&!MOBS[s[0]].passive)s[1]=188;}
+  for(const m of mobs){const s=m.sp;if(s&&s[3]>=51&&s[4]<=137&&s[1]===188&&m.x<188*T){const p=spawnPos(s);m.x=m.hx=p.x;m.y=m.hy=p.y;}}
+  L26.beach=n;
+  // fewer side quests on the shore: drop 3 of the 6 huts and two lore props
+  const drop=new Set(['hut_sigeion_2','hut_sigeion_3','hut_sigeion_5','lo_crew_cairn','lo_sea_letter']);
+  for(let i=NPCS.length-1;i>=0;i--)if(drop.has(NPCS[i].id)){NPCS.splice(i,1);L26.dropped=(L26.dropped||0)+1;}
+  NB_N=-1;try{mm.width=MW;mm.height=MH;for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){mmx.fillStyle=TILE_COL[getT(x,y)]||'#000';mmx.fillRect(x,y,1,1);}}catch(e){}
+ }catch(e){L26.err2=e.message;}}
+if(!window.__L26done){window.__L26done=1;relayout26();beach26();window.__L26=L26;}
+// more houses in Ilios (capital look): greedy, deterministic placement on free meadow
+function houses26(){try{const W=MW;let added=0;const free=(x0,y0,x1,y1)=>{for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){if(map[y*W+x]!==G)return false;}return true;};
+  const npcNear=(x0,y0,x1,y1)=>NPCS.some(n=>{const tx=n.x/T,ty=n.y/T;return tx>=x0-3&&tx<=x1+3&&ty>=y0-3&&ty<=y1+4;});
+  const protos={};for(const q of (window.BLD5Q||[])){const r=q[1];if(typeof r==='string'||!r||r===KHALL||KHOUSES.includes(r)||r===STORE||r===INN||r===BANK||r===SHACK)continue;const key=(r[2]-r[0]+1)+'x'+(r[3]-r[1]+1);if(!protos[key])protos[key]=[q[0],r.slice(0,4)];}
+  const sizes=Object.keys(protos).map(s=>s.split('x').map(Number));if(!sizes.length){L26.err3='no protos';return;}let k=0;const out=[];
+  for(let y=8;y<=40&&added<30;y+=1)for(let x=113;x<=250&&added<30;x+=1){const [w,h]=sizes[k%sizes.length];
+    if(((x*7+y*13)%5)!==0)continue;
+    const x1=x+w-1,y1=y+h-1;if(!free(x-2,y-2,x1+2,y1+3))continue;if(npcNear(x,y,x1,y1))continue;
+    if(out.some(r=>x<=r[2]+4&&x1>=r[0]-4&&y<=r[3]+4&&y1>=r[1]-4))continue;
+    const pr=protos[w+'x'+h];if(!pr)continue;
+    for(let yy=y;yy<=y1;yy++)for(let xx=x;xx<=x1;xx++){map[yy*W+xx]=HOUSE;}
+    const r=[x,y,x1,y1];HOUSES.push(r);out.push(r);
+    const po=pr[0],pr_=pr[1];const o=Object.assign({},po);o.x=po.x+(x-pr_[0])*T;o.y=po.y+(y-pr_[1])*T;o.sy=po.sy+(y-pr_[1])*T;
+    if(o.sw){}OBJ_ROWS[Math.min(OBJ_ROWS.length-1,Math.max(0,Math.floor(o.sy/T)))].push(o);(window.BLD5Q=window.BLD5Q||[]).push([o,r]);
+    SMOKERS.push({x:o.x+o.w*0.8,y:o.y+10});added++;k++;}
+  L26.houses=added;NB_N=-1;try{mm.width=MW;mm.height=MH;for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){mmx.fillStyle=TILE_COL[getT(x,y)]||'#000';mmx.fillRect(x,y,1,1);}}catch(e){}
+ }catch(e){L26.err3=e.message;}}
+if(!window.__L26h){window.__L26h=1;houses26();}
+
+// ===== STAGE 4 part B: The Ashen Citadel (levels 34-50), a new island zone north of the Sigeion pier =====
+const CIT26={cx:334,cy:31,rx:30,ry:25,gate:[331,60,336,60]};
+function citadel26(){try{const W=MW,hh=(x,y)=>((x*73856093)^(y*19349663))>>>0;
+  const S=(x,y,v)=>{if(x>=0&&y>=0&&x<W&&y<MH)map[y*W+x]=v;};
+  // obj prototypes (clone baked objects so the new tiles get sprites)
+  const protoFor=(tile)=>{for(let y=60;y<MH-2;y++)for(let x=0;x<W;x++){if(map[y*W+x]!==tile)continue;const bx=x*T+T/2,by=(y+1)*T;
+      for(let r=y;r<=y+1;r++)for(const o of (OBJ_ROWS[r]||[])){if(Math.abs(o.x+o.w/2-bx)<T*0.65&&o.sy>by-14&&o.sy<by){return {o,x,y};}}}return null;};
+  const P0={};for(const t of [DTREE,BOULDER,WALL,ROCK]){P0[t]=protoFor(t);}
+  const put=(t,x,y)=>{S(x,y,t);const p=P0[t];if(!p)return;const o=Object.assign({},p.o);o.x+=(x-p.x)*T;o.y+=(y-p.y)*T;o.sy+=(y-p.y)*T;if(o.sw)o.ph=(hh(x,y)%628)/100;OBJ_ROWS[Math.min(OBJ_ROWS.length-1,Math.max(0,Math.floor(o.sy/T)))].push(o);};
+  // island body
+  for(let y=CIT26.cy-CIT26.ry-2;y<=CIT26.cy+CIT26.ry+2;y++)for(let x=CIT26.cx-CIT26.rx-2;x<=CIT26.cx+CIT26.rx+2;x++){const dx=(x-CIT26.cx)/CIT26.rx,dy=(y-CIT26.cy)/CIT26.ry,n=((hh(x,y)%100)/100-0.5)*0.12,d=dx*dx+dy*dy+n;
+    if(map[y*W+x]!==WATER)continue;if(d<=0.86)S(x,y,ASH);else if(d<=1)S(x,y,SAND);}
+  // scatter: dead trees, boulders, stone patches (never on the road lanes)
+  for(let y=CIT26.cy-CIT26.ry;y<=CIT26.cy+CIT26.ry;y++)for(let x=CIT26.cx-CIT26.rx;x<=CIT26.cx+CIT26.rx;x++){if(map[y*W+x]!==ASH)continue;const h=hh(x,y)%100,inLane=Math.abs(x-334)<=3&&y>44;
+    if(inLane)continue;if(x>=321&&x<=351&&y>=17&&y<=45)continue;
+    if(h<4)put(DTREE,x,y);else if(h<6)put(BOULDER,x,y);else if(h<12)S(x,y,STONE);}
+  // fortress: wall ring with south gate and inner paved yard
+  for(let y=17;y<=45;y++)for(let x=321;x<=351;x++){const edge=y===17||y===45||x===321||x===351;
+    if(edge){const gate=y===45&&x>=332&&x<=336;if(gate)S(x,y,PATH);else put(WALL,x,y);}
+    else S(x,y,(x>=327&&x<=345&&y>=21&&y<=33)?STONE:ASH);}
+  // road from gate to keep
+  for(let y=34;y<=46;y++)for(let x=333;x<=335;x++)S(x,y,PATH);
+  // boss dais: stone circle with boulders
+  for(const [x,y] of [[330,22],[342,22],[330,32],[342,32]])put(BOULDER,x,y);
+  // causeway from the Sigeion pier up to the island (docks)
+  for(let y=CIT26.cy+CIT26.ry-3;y<=66;y++)for(let x=331;x<=336;x++)S(x,y,DOCK);
+  for(let y=47;y<=56;y++)for(let x=333;x<=335;x++){if(map[y*W+x]!==WATER)S(x,y,PATH);}
+  // gate (level guard) + guard + warden + sign
+  const gr={id:'citadel',to:'the Ashen Citadel',lvl:34,wTier:30,aTier:30,rect:CIT26.gate.slice(),side:'n',guard:'citadelguard'};GATE_REQS.push(gr);GATE_BY.citadel=gr;
+  NPCS.push({id:'citadelguard',name:'Lochagos Brasidas',x:333.5*T,y:62.4*T,gate:'citadel'});
+  NPCS.push({id:'citadelwarden',name:'Strategos Leontes',x:334*T,y:50.5*T});
+  NPCS.push({id:'citsign0',name:'Causeway Sign',x:337.4*T,y:62.6*T,sign:true,text:'THE ASHEN CITADEL, Lv 34-50. Only veterans in Tier 30 gear cross here. Beyond: the Cinder Host and the Dread Herald.'});
+  NPC_LINES.citadelguard="The causeway is the only road. Every soul that went up there in the last year came down a different colour. Mind your gear, and your nerve.";
+  NPC_LINES.citadelwarden="The Herald's host burned the old Citadel to its stones, and the stones still glow at dusk. Clear the host, and I will open the armoury to you.";
+  SHEET_NPC.citadelguard='x_kaja_spearman';SHEET_NPC.citadelwarden='c_knightgold';
+  try{NPC_LOOK=NPC_LOOK||0;}catch(e){}
+  WORLD_LABELS.push(['The Ashen Citadel','#ff8a5a',CIT26.cx*T-120,(CIT26.cy+CIT26.ry+2)*T]);
+  // mobs: reuse existing art (tinted or scaled); stats come from level
+  const M=(k,d)=>{MOBS[k]=d;};
+  M('ashrev',{name:'Ashen Revenant',lv:[34,37],speed:120,r:15,aggro:160,human:true,side:'barb',resp:16,xpMult:1.4,atkMult:1.2,hpMult:1.0,base:'berserker'});
+  M('citguard',{name:'Citadel Hoplite',lv:[36,40],speed:105,r:15,aggro:150,human:true,side:'army',shield:true,resp:16,xpMult:1.4,atkMult:1.15,hpMult:1.15,base:'sergeant'});
+  M('cinderarch',{name:'Cinder Archer',lv:[37,41],speed:100,r:14,aggro:220,human:true,ranged:230,resp:15,xpMult:1.4,boss:false,mini:false,base:'rbow'});
+  M('ashtitan',{name:'Ash Titan',lv:[42,46],speed:100,r:22,aggro:170,human:true,side:'barb',resp:22,xpMult:2.0,atkMult:1.35,hpMult:2.2,big:true,sc:1.5,base:'berserker'});
+  M('pyrrhus',{name:'Pyrrhus Ashbringer',lv:[46,46],speed:115,r:26,aggro:190,human:true,side:'barb',mini:true,big:true,hpMult:6,atkMult:1.5,xpMult:4,resp:180,base:'warlord'});
+  M('phobos',{name:'Phobos, the Dread Herald',lv:[50,50],speed:120,r:30,aggro:220,human:true,side:'army',mini:true,big:true,hpMult:11,atkMult:1.8,xpMult:6,resp:300,base:'captain'});
+  SHEET_MOB.ashrev={k:AM.x_ash_spearman?'x_ash_spearman':'c_caveman2'};SHEET_MOB.citguard={k:AM.x_kaja_spearman?'x_kaja_spearman':'c_kajan'};SHEET_MOB.cinderarch={k:AM.x_deserter_archer?'x_deserter_archer':'c_robber'};
+  SHEET_MOB.ashtitan={k:AM.x_ash_axeman?'x_ash_axeman':'c_caveman2',sc:1.5};SHEET_MOB.pyrrhus={k:AM.x_ash_axeman?'x_ash_axeman':'c_caveman2',sc:2};SHEET_MOB.phobos={k:'c_knightgold',sc:2};
+  V5ENE.ashrev=V5ENE.berserker;V5ENE.citguard=V5ENE.sergeant;V5ENE.cinderarch=V5ENE.kbowman;V5ENE.ashtitan=V5ENE.berserker;
+  DROPS.ashrev=[['ashen_xiphos',0.01],['ashen_cuirass',0.008],['ash_cloak',0.012],['ashen_signet',0.01]];
+  DROPS.citguard=[['ashplain_dory',0.01],['ashen_cuirass',0.01],['ash_torque',0.012],['ashen_labrys',0.008]];
+  DROPS.cinderarch=[['nightash_dirk',0.01],['blackwood_leather',0.01],['ashseer_robe',0.008],['ash_cloak',0.012]];
+  DROPS.ashtitan=[['sunforged_xiphos',0.01],['sunforged_cuirass',0.01],['storm_labrys',0.008],['sun_spear',0.008],['ember_sting',0.01],['lastlight_mantle',0.01]];
+  DROPS.pyrrhus=[['sunforged_cuirass',0.5],['storm_labrys',0.3],['oath_ring',0.3]];
+  DROPS.phobos=[['sunforged_xiphos',1],['starlit_robe',0.5],['huntlord_leather',0.5],['oath_ring',0.6],['lastlight_mantle',0.6]];
+  const SP=[['ashrev',308,360,47,56,9],['ashrev',322,350,34,44,5],['citguard',323,349,19,33,7],['cinderarch',322,350,19,33,6],['ashtitan',308,319,18,40,3],['ashtitan',352,359,18,40,3],['cinderarch',308,320,30,44,3],['pyrrhus',331,341,26,30,1],['phobos',334,338,20,23,1]];
+  let nm=0;for(const s of SP){SPAWNS.push(s);for(let i=0;i<s[5];i++){const m={type:s[0],sp:s};makeMob(m);mobs.push(m);nm++;}}
+  // quests (appended; same giver chain)
+  const Q=(o)=>{QUESTS.push(o);};
+  Q({giver:'citadelwarden',name:'Ash on the Wind',target:'ashrev',count:10,minLvl:34,xp:42000,reward:'potion_l',rewardCount:5,ask:"Revenants walk the shore road in the Herald's colours. Break ten of them and I will believe you can stand in this place.",done:"Ten fewer. They rise slower than they used to. Take these, and go on."});
+  Q({giver:'citadelwarden',name:'The Hoplites of Fire',chain:'same',target:'citguard',count:8,minLvl:37,xp:60000,reward:'potion_l',rewardCount:5,ask:"Inside the walls the old garrison still marches, hollow and furious. Eight of them. Shields first, then the gaps between.",done:"Hollow men, hollow shields. You did well."});
+  Q({giver:'citadelwarden',name:'Cinder Rain',chain:'same',target:'cinderarch',count:8,minLvl:40,xp:78000,reward:'potion_l',rewardCount:5,ask:"Their archers loose burning arrows from the yard. Silence eight and the yard is ours.",done:"The rain has stopped. For now. Take this."});
+  Q({giver:'citadelwarden',name:'Pyrrhus Ashbringer',chain:'same',target:'pyrrhus',count:1,minLvl:44,xp:110000,rewardSet:['ashen_cuirass','ashen_xiphos','ashplain_dory','ashen_labrys'],ask:"Pyrrhus Ashbringer holds the dais. He has never lost a duel. Not that anyone lives to say so. Kill him.",done:"The dais is cold. Choose your spoils, and keep your eyes up: the Herald watched."});
+  Q({giver:'citadelwarden',name:'The Dread Herald',chain:'same',target:'phobos',count:1,minLvl:48,xp:190000,rewardSet:['sunforged_cuirass','sunforged_xiphos','sun_spear','storm_labrys'],ask:"Phobos, Herald of the Black Ship, waits in the keep. Level 50 is not a rank; it is a promise. Go and keep it.",done:"It is over. The Citadel's stones will cool. Take the sunforged arms and carry them proudly."});
+  CIT26.mobs=nm;CIT26.q=5;NB_N=-1;
+  try{mm.width=MW;mm.height=MH;for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){mmx.fillStyle=TILE_COL[getT(x,y)]||'#000';mmx.fillRect(x,y,1,1);}}catch(e){}
+  CIT26.ok=1;}catch(e){CIT26.err=e.message+' '+((e.stack||'').split('\n')[1]||'');}}
+if(!window.__CIT26){window.__CIT26=CIT26;citadel26();}
+
+// ===== STAGE 4 part C: Aros-style menus (left tab column, 10x4 paperdoll bag + stat panel, bank quantities, task board, world map tools, skill XP bars) =====
+function cap26(sel,fn){const hit=e=>{const b=e.target&&e.target.closest?e.target.closest(sel):null;return b&&!b.disabled?b:null;};
+  document.addEventListener('click',e=>{const b=hit(e);if(!b)return;e.stopImmediatePropagation();e.preventDefault();if(window.__c26){window.__c26=0;return;}fn(b);},true);
+  document.addEventListener('pointerup',e=>{if(e.pointerType==='mouse')return;const b=hit(e);if(!b)return;e.stopImmediatePropagation();window.__c26=1;setTimeout(()=>{window.__c26=0},700);fn(b);},true);}
+const TB26=()=>{const h=H23();h.tb=h.tb||{act:null,done:0,cat:'melee'};return h.tb;};
+// ---- CSS
+(function(){const st=document.createElement('style');st.id='css26';st.textContent=`
+/* left tab column */
+#dlg.dock .tabbar{position:absolute!important;left:7px!important;top:42px!important;height:auto!important;max-height:none!important;display:flex!important;flex-direction:column!important;gap:1px!important;width:40px!important;padding:3px!important;background:#b99458!important;border:2px solid #7a5a2a!important;border-radius:6px 0 0 6px;z-index:3;box-sizing:border-box}
+#dlg.dock{padding-left:58px!important}
+#dlg.dock .tabbar .tb{flex:0 0 24px!important;width:30px!important;height:24px!important;min-height:0!important;padding:0!important;margin:0!important}
+#dlg.dock .tabbar .tb{position:relative!important}#dlg.dock .tabbar .tb i{position:absolute!important;left:50%!important;top:50%!important;margin:-9px 0 0 -9px!important;width:18px!important;height:18px!important;transform:none!important;background-size:contain!important;background-repeat:no-repeat!important;image-rendering:pixelated}
+/* bag: 10x4 paperdoll window */
+#dlg.dock.bag26{width:min(740px,calc(100vw - 58px))!important;grid-template-columns:236px 1fr!important;column-gap:10px!important}
+#dlg.dock.bag26>h2,#dlg.dock.bag26>.row,#dlg.dock.bag26>.tabbar{grid-column:1/-1}
+#dlg.dock.bag26 .bgrid{grid-template-columns:repeat(10,minmax(0,34px))!important;gap:3px!important;justify-content:start!important}
+#dlg.dock.bag26 .bgrid .bslot{width:34px;height:34px;min-width:0;min-height:0}
+#dlg.dock.bag26 .bgrid .bslot i{width:28px!important;height:28px!important;margin:-14px 0 0 -14px!important;background-size:28px 28px!important}
+#dlg.dock.bag26 .eqgrid{gap:3px!important}
+.stp26{display:grid;grid-template-columns:1fr 1fr;gap:2px 8px;margin:4px 0;padding:5px 7px;border:2px solid #8a6a34;border-radius:4px;background:#f1e2b8;font-size:11.5px;color:#3a2410}
+.stp26 b{color:#6a3a10}
+.stp26 span{display:flex;justify-content:space-between}
+/* skills: XP bars + readable names */
+#dlg.dock .skc{position:relative;overflow:hidden}
+#dlg.dock .skc *{color:#3a2410!important;opacity:1!important}
+#dlg.dock .skc>i{display:block!important;position:absolute;left:0;bottom:0;height:6px;min-height:0;background:linear-gradient(#ffd23a,#e09a12)!important;border-top:1px solid #7a5a2a;border-radius:0 3px 0 0;opacity:1!important}
+#dlg.dock .skc::after{content:'';position:absolute;left:0;right:0;bottom:0;height:6px;background:#8a6a3466;z-index:0}
+#dlg.dock .skc>i{z-index:1}
+/* bank / shop (centre panels): tan + dark text */
+#dlg.mea p,#dlg.mea small,#dlg.mea h2,#dlg.mea .col>p,#dlg.mea .purse{color:#3a2410!important;text-shadow:none!important}
+#dlg.mea .bgrid{filter:none}
+.qb26{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin:2px 0 4px;grid-column:1/-1}
+.qb26 button{min-width:44px;min-height:34px;padding:2px 6px;font-weight:bold;border:2px solid #7a5a2a;border-radius:4px;background:#d9bf86;color:#3a2410;font-size:13px}
+.qb26 button.on{background:#ffd23a;box-shadow:0 0 0 2px #fff4c0}
+/* task board */
+.tk26{display:flex;align-items:center;gap:8px;margin:3px 0;padding:5px 7px;border:2px solid #8a6a34;border-radius:4px;background:#f1e2b8;color:#3a2410}
+.tk26 span{flex:1;font-size:12px}.tk26 small{display:block}
+.tk26.act{background:#fff0b0;border-color:#c98a10}
+.tbar26{height:7px;background:#8a6a3466;border-radius:3px;margin-top:3px}.tbar26 i{display:block;height:100%;background:linear-gradient(#ffd23a,#e09a12);border-radius:3px}
+.sub26{display:flex;gap:4px;margin:2px 0 4px}.sub26 button{flex:1;min-height:34px;border:2px solid #7a5a2a;border-radius:4px;background:#d9bf86;color:#3a2410;font-weight:bold}.sub26 button.on{background:#f7e9bf;box-shadow:0 0 0 2px #c98a10}
+/* world map tools */
+#wmap .wb.zb{min-width:40px;font-size:18px;line-height:1;padding:2px 8px}
+#wmap .wb.on26{background:#ffd23a!important;color:#3a2410!important;text-shadow:none!important}
+`;document.head.appendChild(st);})();
+// ---- tab column position: keep it glued to the left edge of the window
+function tabCol26(){try{const t=dlg.querySelector('.tabbar');if(!t||!dlg.classList.contains('dock'))return;for(let i=0;i<2;i++){const r=dlg.getBoundingClientRect(),tr=t.getBoundingClientRect();const want=r.left+22,wantT=r.top+44;const cl=parseFloat(getComputedStyle(t).left)||0,ct=parseFloat(getComputedStyle(t).top)||0;t.style.setProperty('left',(cl+want-tr.left)+'px','important');t.style.setProperty('top',(ct+wantT-tr.top)+'px','important');}}catch(e){}}
+{const _op=openPanel;openPanel=function(){dlg.classList.remove('bag26');const r=_op.apply(this,arguments);setTimeout(tabCol26,0);setTimeout(tabCol26,120);return r;};}
+window.addEventListener('resize',()=>setTimeout(tabCol26,50));
+// ---- bag: 10x4 grid + stat panel
+{const _ob=openBag;openBag=function(){const r=_ob.apply(this,arguments);try{if(dlg.classList.contains('dock')){dlg.classList.add('bag26');
+  const c1=dlg.querySelector('.col');if(c1){const ps=[...c1.querySelectorAll('p')].find(p=>/Str\s/.test(p.textContent));
+    const stp='<div class="stp26"><span><b>Strength</b>'+Math.round(pAtk())+'</span><span><b>Defence</b>'+Math.round(pDef())+'</span><span><b>Ranged</b>'+Math.round(typeof rSum==='function'?rSum('ratk'):0)+'</span><span><b>Accuracy</b>'+Math.round(HIT_BASE*100+pAcc())+'%</span><span><b>Max HP</b>'+maxHp()+'</span><span><b>Move</b>'+Math.round(mSpeed()/1.6)+'%</span></div>';
+    if(ps)ps.remove();const g=dlg.querySelectorAll('.col')[1];const gr=g&&g.querySelector('.bgrid');if(gr)gr.insertAdjacentHTML('afterend',stp);}
+  setTimeout(tabCol26,0);}}catch(e){}return r;};}
+// ---- skills: show XP numbers in the title attr (bars are CSS)
+// ---- bank: quantity bar x1 x5 x10 x100 x1000 All
+const BQ26=['1','5','10','100','1000','all'];
+function bq26(){const h=H23();return h.bq||'all';}
+{const _bk=openBank;openBank=function(){const r=_bk.apply(this,arguments);try{if(!dlg.querySelector('.bank8'))return r;const q=bq26();const bar='<div class="qb26" id="qb26">'+BQ26.map(v=>'<button data-a="q26" data-v="'+v+'" class="'+(q===v?'on':'')+'">'+(v==='all'?'All':'x'+v)+'</button>').join('')+'</div>';
+  const first=dlg.querySelector('.col');if(first&&!dlg.querySelector('#qb26'))first.insertAdjacentHTML('beforebegin',bar);
+  const d=dlg.querySelector('.bdet');if(d&&d.querySelector('[data-a=bw]'))d.style.display='none';}catch(e){}return r;};}
+cap26('[data-a="q26"]',b=>{H23().bq=b.dataset.v;save();openBank();});
+cap26('#dlg [data-a="bd"]',b=>{const k=b.dataset.v,q=bq26();bankDeposit(k,q==='all'?0:+q);openBank();});
+cap26('#dlg .bank8 [data-a="bk"]',b=>{const k=b.dataset.v,q=bq26();bankWithdraw(k,q==='all'?(P.bank[k]||0):+q);openBank();});
+// ---- Task board
+const TKN26={melee:'Melee',ranged:'Ranged',magic:'Magic'};
+function tkList26(cat){const L=[];const lv=P.lvl;const cand=Object.keys(MOBS).filter(k=>{const d=MOBS[k];return d&&!d.passive&&!d.boss&&!d.mini&&!d.sea&&d.lv&&d.lv[1]>=Math.max(1,lv-4)&&d.lv[0]<=lv+5;});
+  cand.sort((a,b)=>MOBS[a].lv[0]-MOBS[b].lv[0]);const pick=cand.slice(0,40);const out=[];
+  const seed=(TB26().done||0);for(let i=0;i<4&&pick.length;i++){const t=pick[(i*7+seed*3)%pick.length];const n=[8,12,16,24][i],lvl=MOBS[t].lv[1];out.push({cat,target:t,n,coins:Math.round(n*(6+lvl*2.2)),xp:Math.round(n*(8+lvl*4))});}
+  return out;}
+function openTasks26(){const tb=TB26();const cat=tb.cat||'melee';
+  let h='<h2>Task Board</h2><div class="sub26">'+Object.keys(TKN26).map(k=>'<button data-a="tk26c" data-v="'+k+'" class="'+(cat===k?'on':'')+'">'+TKN26[k]+'</button>').join('')+'</div>';
+  const a=tb.act;
+  if(a){const d=MOBS[a.target];h+='<div class="tk26 act"><span><b>Active ('+TKN26[a.cat]+'): '+a.n+' '+d.name+'</b><small>'+(a.cat==='ranged'?'Kills must be made with a bow.':'Kills must be made in melee (no bow).')+' Reward '+fmtCoins(a.coins)+' + '+a.xp+' XP</small><div class="tbar26"><i style="width:'+Math.min(100,Math.round(100*a.have/a.n))+'%"></i></div><small>'+a.have+'/'+a.n+'</small></span>'+(a.have>=a.n?'<button class="pb" data-a="tk26claim">Claim</button>':'<button class="pb" data-a="tk26drop">Abandon</button>')+'</div>';}
+  if(cat==='magic'){h+='<p><small>Magic is not in the game yet. Tasks will appear here when the first spells arrive.</small></p><div class="tk26" style="opacity:.55"><span><b>Locked</b><small>Cast 20 spells (coming soon)</small></span></div>';}
+  else{for(const [i,t] of tkList26(cat).entries()){const d=MOBS[t.target];h+='<div class="tk26"><span><b>'+t.n+' '+d.name+'</b><small>Lv '+d.lv[0]+(d.lv[1]!==d.lv[0]?'-'+d.lv[1]:'')+' · '+fmtCoins(t.coins)+' + '+t.xp+' XP</small></span><button class="pb" data-a="tk26go" data-v="'+i+'"'+(a?' disabled':'')+'>Take</button></div>';}}
+  h+='<p><small>Tasks finished: '+(tb.done||0)+'. One task at a time. Progress counts anywhere in the world.</small></p><div class="row"><button class="pb" data-a="close">Close</button></div>';openPanel(h);}
+cap26('[data-a="tk26c"]',b=>{TB26().cat=b.dataset.v;openTasks26();});
+cap26('[data-a="tk26go"]',b=>{const tb=TB26();if(tb.act)return;const t=tkList26(tb.cat||'melee')[+b.dataset.v];if(!t)return;tb.act=Object.assign({have:0},t);save();toast('Task taken: '+t.n+' '+MOBS[t.target].name);openTasks26();});
+cap26('[data-a="tk26drop"]',b=>{TB26().act=null;save();openTasks26();});
+cap26('[data-a="tk26claim"]',b=>{const tb=TB26(),a=tb.act;if(!a||a.have<a.n)return;P.coins+=a.coins;gainXp(a.xp);tb.act=null;tb.done=(tb.done||0)+1;save();toast('Task complete! +'+fmtCoins(a.coins));openTasks26();});
+{const _k=killMob;killMob=function(m){const r=_k.apply(this,arguments);try{const tb=TB26(),a=tb.act;if(a&&m&&m.type===a.target&&a.have<a.n){const bow=isBow(wIt());if((a.cat==='ranged')===!!bow){a.have++;if(a.have>=a.n)toast('Task ready to claim at the Task Board');}}}catch(e){}return r;};}
+(function(){const mk=(draw)=>{const c=document.createElement('canvas');c.width=c.height=12;const g=c.getContext('2d');draw(g);return c.toDataURL();};
+  TAB_ICONS.tasks=mk(g=>{g.fillStyle='#1a1008';g.fillRect(1,1,10,10);g.fillStyle='#e8c88a';g.fillRect(2,2,8,8);g.fillStyle='#7a2a1a';g.fillRect(3,3,6,1);g.fillRect(3,5,6,1);g.fillRect(3,7,4,1);g.fillStyle='#c0301a';g.fillRect(8,7,2,2);});
+  const i=TABS.findIndex(t=>t[0]==='quests');TABS.splice(i+1,0,['tasks','Task Board',()=>openTasks26()]);})();
+// ---- world map: zoom buttons + marker toggle + marker drawing
+(function(){const hd=wmEl.querySelector('.wh');if(!hd)return;const me=document.getElementById('wmMe');
+  const mk=(id,txt,cls)=>{const b=document.createElement('button');b.className='wb ol '+(cls||'');b.id=id;b.textContent=txt;return b;};
+  const zi=mk('wmZi','+','zb'),zo=mk('wmZo','\u2212','zb'),mkb=mk('wmMk','Show markers','');
+  hd.insertBefore(mkb,me);hd.insertBefore(zo,mkb);hd.insertBefore(zi,zo);
+  const sync=()=>mkb.classList.toggle('on26',wmMk26());
+  zi.addEventListener('click',()=>wmZoomAt(1.4,WM.cw/2,WM.ch/2));zo.addEventListener('click',()=>wmZoomAt(1/1.4,WM.cw/2,WM.ch/2));
+  mkb.addEventListener('click',()=>{H23().wmk=wmMk26()?0:1;save();sync();});
+  window.__wmSync26=sync;})();
+function wmMk26(){const h=H23();return h.wmk===undefined?true:!!h.wmk;}
+function wmMarkers26(){const out=[];const giv=new Set();for(const q of QUESTS)giv.add(q.giver);try{for(const e of ERRANDS)giv.add(e.giver);}catch(e){}
+  for(const n of NPCS){if(n.node||n.sign||n.hut)continue;let ic=null;
+    if(n.id==='merchant'||n.id==='kmerchant')ic='\u{1F4B0}';else if(n.id==='banker'||n.id==='kbanker')ic='\u{1F3E6}';else if(n.id==='innkeeper'||n.id==='kinn')ic='\u{1F6CF}';
+    else if(n.id==='chest')ic='\u{1F4E6}';else if(/^ship_|^ferry_|^boat_/.test(n.id))ic='\u2693';else if(n.gate)ic='\u{1F6E1}';else if(/^st_(smithy|tanning)/.test(n.id))ic='\u{1F528}';else if(n.id==='hippo_gate'||/arena/i.test(n.id))ic='\u{1F3DF}';
+    else if(giv.has(n.id))ic='\u2757';
+    if(ic)out.push([ic,n.x/T,n.y/T]);}
+  return out;}
+{const _wd=wmDraw;wmDraw=function(){_wd.apply(this,arguments);try{if(!WM.open)return;if(window.__wmSync26)window.__wmSync26();if(!wmMk26())return;const g=wmx,k=WMP*WM.sc;g.setTransform(WM.dpr,0,0,WM.dpr,0,0);g.textAlign='center';g.textBaseline='middle';g.font=Math.round(Math.max(11,Math.min(20,k*1.6)))+'px sans-serif';
+  for(const [ic,x,y] of wmMarkers26()){const sx=WM.ox+x*k,sy=WM.oy+y*k;if(sx<-20||sx>WM.cw+20||sy<-20||sy>WM.ch+20)continue;g.fillText(ic,sx,sy);}}catch(e){}};}
+for(const l of WM_LABELS){const d=L26dx(l[1],l[2]);if(d)l[1]+=d;}
+WM_LABELS.push(['The Ashen Citadel',334,31,1],['Arena Grounds',67,27,1]);try{WM_BASE=null;}catch(e){}
+
 
 //@@HIP6END@@
 // ---------- v22.5: music batch 3 wiring (interiors, hippodrome, chariot mount loops, town/hub market ambience) ----------

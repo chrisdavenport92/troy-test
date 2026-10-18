@@ -7782,6 +7782,75 @@ V5ENE.lykaon=['lykaon','lykaon_ash','lykaon_olive','lykaon_indigo'];
   const st=document.createElement('style');st.textContent='#int23.idle24{opacity:.38!important;filter:grayscale(.8);font-size:18px!important}';document.head.appendChild(st);})();
 // hide gift/go helper icons while a Skirmish / Hippodrome is running
 {const st=document.createElement('style');st.textContent='body.skOn #gift23,body.skOn #go23{display:none!important}';document.head.appendChild(st);}
+// Shop fix: the NPC typewriter (v5Type) hid every item name/price until ~60 s had passed. Never type lists.
+{const _t=v5Type;v5Type=function(root){try{if(root.querySelector('.item,.tabs,.bgrid,.purse,select'))return;}catch(e){}return _t.apply(this,arguments);};}
+// NPC portrait must not cover shop text
+{const st=document.createElement('style');st.textContent='#dlg.hasPor .v5por{width:60px!important;height:60px!important;top:34px!important;left:8px!important;z-index:2}#dlg.hasPor:has(.item) .v5por{display:none!important}';document.head.appendChild(st);}
+// ===== Shop: stock ALL gear (Gear tab), zone-tiered (a tier every 10 levels), tester = max cash and no gating =====
+let GF24='all';
+function gearList24(){const L=[];for(const k in ITEMS){const it=ITEMS[k];if(!it.slot||it.future||/_q\d+$/.test(k)||k==='tattered'||k==='skribz_signet')continue;L.push(k);}
+  L.sort((a,b)=>(ITEMS[a].req||1)-(ITEMS[b].req||1)||String(ITEMS[a].slot).localeCompare(ITEMS[b].slot)||gearScore(ITEMS[a])-gearScore(ITEMS[b]));return L;}
+function gearPrice24(k){const it=ITEMS[k],r=it.req||1;let p=60+r*r*12+gearScore(it)*6;if(it.slot==='weapon')p*=1.2;if(it.slot==='ring'||it.slot==='neck'||it.slot==='cape')p*=1.3;return Math.max(10,Math.round(p/5)*5);}
+function zoneCap24(){return (Math.floor(P.lvl/10)+1)*10;}
+function gearLocked24(k){const it=ITEMS[k];if(V().tester)return '';if(it.faction&&P.faction&&it.faction!==P.faction)return 'Other oath';if((it.req||1)>zoneCap24())return 'Zone '+(Math.floor((it.req||1)/10)+1);return '';}
+{const _sp=shopPrices;shopPrices=function(){const b=_sp();if(shopWho==='shack')return b;const o=Object.assign({},b);for(const k of gearList24())if(o[k]===undefined)o[k]=gearPrice24(k);return o;};}
+{const _sh=shopShow17;shopShow17=function(k){const it=ITEMS[k];if(it&&it.slot&&shopTab==='buy'&&!(SHOP_PRICES[k]!==undefined||(typeof KAJA_PRICES!=='undefined'&&KAJA_PRICES[k]!==undefined)))return false;if(it&&it.slot&&shopTab==='gear'&&gearLocked24(k))return false;return _sh(k);};}
+{const _bi=buyItem;buyItem=function(k){const it=ITEMS[k];if(V().tester&&P.coins<1e7)P.coins=1e8;return _bi.apply(this,arguments);};}
+{const _os=openShop;openShop=function(tab){if(tab)shopTab=tab;
+  if(shopWho==='shack'||(shopTab!=='gear'&&shopTab!=='buy'&&shopTab!=='sell')){return _os.apply(this,arguments);}
+  if(V().tester&&P.coins<1e7)P.coins=1e8;
+  const st=dlg.scrollTop,want=shopTab;if(want==='gear')shopTab='buy';const r=_os.call(this);shopTab=want;
+  try{const tabs=dlg.querySelector('.tabs');if(tabs&&!tabs.querySelector('[data-v=gear]')){const b=document.createElement('button');b.setAttribute('data-a','tab');b.setAttribute('data-v','gear');b.textContent='Gear';tabs.insertBefore(b,tabs.children[1]);}
+    if(tabs)tabs.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.getAttribute('data-v')===want));
+    if(want==='gear'){dlg.querySelectorAll('.item').forEach(e=>e.remove());const anchor=[...dlg.querySelectorAll('.row')].pop();
+      const slots=['all','weapon','bow','head','chest','legs','boots','cape','ring','neck'];
+      let h='<div class="row" style="flex-wrap:wrap;gap:3px">'+slots.map(s=>'<button class="pb" style="padding:2px 8px;font-size:12px'+(GF24===s?';outline:2px solid #ffd75a':'')+'" onclick="GF24=\''+s+'\';openShop(\'gear\')">'+s+'</button>').join('')+'</div>';
+      const SP=shopPrices();for(const k of gearList24()){const it=ITEMS[k];const isBow24=/bow/i.test(it.wtype||'')||/bow/.test(k);if(GF24==='bow'){if(!isBow24)continue;}else if(GF24!=='all'&&it.slot!==GF24)continue;
+        const lock=gearLocked24(k),pr=SP[k],lv=P.lvl<(it.req||1)?' <small style="color:#ff9a8a">Lv '+it.req+'</small>':'';
+        h+=shopRow(k,'<div style="text-align:right"><div class="price">'+fmtCoins(pr)+lv+'</div>'+(lock?'<small style="color:#ffb070">'+lock+'</small>':'<button data-a="buy" data-v="'+k+'"'+(P.coins<pr?' disabled':'')+'>Buy</button>')+'</div>');}
+      if(anchor)anchor.insertAdjacentHTML('beforebegin',h);else dlg.insertAdjacentHTML('beforeend',h);}
+    dlg.scrollTop=st;}catch(e){console.warn('gear tab',e);}return r;};}
+// ===== Tester mode: Gear Codex click = quick try-on (nothing added to the bag); Ranged forced to max =====
+function try24(k){if(!V().tester)return;const it=ITEMS[k];if(!it||!it.slot)return;const h=H23();h.try=h.try||{};if(h.try[it.slot]===undefined)h.try[it.slot]=P.eq[it.slot]||null;P.eq[it.slot]=k;try{portraitKey='';}catch(e){}try{rgBtn&&rgBtn();}catch(e){}toast('Trying on '+it.name+' (tester)');try{save();}catch(e){}}
+function tryRestore24(){const h=H23();const t=h.try||{};for(const s in t)P.eq[s]=t[s];h.try={};toast('Gear restored');try{save();}catch(e){}try{openCodex();}catch(e){}}
+{const _oc=openCodex;openCodex=function(){const r=_oc.apply(this,arguments);try{if(V().tester&&dlg.querySelector('.codex')){const nm={};for(const k in ITEMS)if(ITEMS[k].slot)(nm[ITEMS[k].name]=nm[ITEMS[k].name]||k);
+  dlg.querySelectorAll('.item').forEach(e=>{const n=e.querySelector('span');const t=n&&n.firstChild&&n.firstChild.textContent.trim();if(t&&nm[t]){e.setAttribute('data-k24',nm[t]);e.style.cursor='pointer';}});
+  const hd=dlg.querySelector('h2');if(hd&&!dlg.querySelector('#try24r'))hd.insertAdjacentHTML('afterend','<p style="margin:2px 0"><small>Tester: tap any gear to try it on (not added to your bag). </small><button class="pb" id="try24r" style="padding:2px 8px;font-size:12px" onclick="tryRestore24()">Restore my gear</button></p>');}}catch(e){}return r;};}
+document.addEventListener('click',function(e){const it=e.target&&e.target.closest?e.target.closest('[data-k24]'):null;if(!it||!V().tester)return;e.stopImmediatePropagation();try24(it.getAttribute('data-k24'));},true);
+{const _tm=testerUnlock19;testerUnlock19=function(){const r=_tm.apply(this,arguments);try{P.sk=P.sk||{};P.sk.ranged=Math.max(P.sk.ranged||0,SKILL_XP[SKILL_MAX]);P.coins=Math.max(P.coins||0,1e8);}catch(e){}return r;};}
+// ===== Denser spawns across the starting areas (existing mob types only; more types need art) =====
+(function(){let done=false;const EXTRA=[['crab',66,86,16,19,5],['crab',70,82,24,27,4],['viperling',51,64,27,40,4],['viper',51,64,27,40,3],['bandit',66,79,34,40,4],['bandit',66,79,28,33,3],
+  ['piglet',5,15,23,30,3],['piglet',32,42,26,30,3],['foxkit',3,13,24,30,3],['foxkit',28,42,21,25,3],['wolfcub',4,40,33,46,4],['boar',5,15,23,30,2],['boar',32,42,26,30,2],['wolf',2,45,32,47,4],['crab',69,86,16,19,3]];
+  const _u=update;update=function(dt){_u.apply(this,arguments);if(done||typeof makeMob!=='function'||!mobs.length)return;done=true;try{if(V().h23&&V().h23.sp24)return;let n=0;for(const s of EXTRA){if(!MOBS[s[0]])continue;SPAWNS.push(s);for(let i=0;i<s[5];i++){const m={type:s[0],sp:s};makeMob(m);mobs.push(m);n++;}}window.__extraMobs24=n;}catch(e){window.__e24b=e.message}};})();
+// ===== Equip by tapping (matching paperdoll slot lights up, tap it to equip) or by dragging the item onto its slot =====
+{const st=document.createElement('style');st.textContent='.eqgrid .bslot.lit24,.pdoll .bslot.lit24{outline:3px solid #ffe27a;box-shadow:0 0 12px 3px #ffd23a;animation:lit24 .7s infinite alternate}@keyframes lit24{to{box-shadow:0 0 20px 6px #fff2a0}}#drag24{position:fixed;z-index:99999;width:40px;height:40px;margin:-20px 0 0 -20px;pointer-events:none;background-size:contain;background-repeat:no-repeat;image-rendering:pixelated;opacity:.9}';document.head.appendChild(st);}
+function eqSlots24(){return [...dlg.querySelectorAll('.eqgrid .bslot,.pdoll .bslot')];}
+function eqSlotOf24(el){const l=eqSlots24();const i=l.indexOf(el);return i>=0?EQ_SLOTS[i]:null;}
+function light24(){try{const k=bagSel;eqSlots24().forEach(e=>e.classList.remove('lit24'));const it=k&&ITEMS[k];if(!it||!it.slot)return;const l=eqSlots24(),i=EQ_SLOTS.indexOf(it.slot);if(i>=0&&l[i])l[i].classList.add('lit24');}catch(e){}}
+for(const nm of ['openBag','openChar']){const f=eval(nm);eval(nm+'=function(){const r=f.apply(this,arguments);light24();return r;}');}
+function tapEq24(e){const el=e.target&&e.target.closest?e.target.closest('.eqgrid .bslot,.pdoll .bslot'):null;if(!el||!bagSel)return false;const it=ITEMS[bagSel];if(!it||!it.slot)return false;if(eqSlotOf24(el)!==it.slot)return false;if(P.eq[it.slot]===bagSel)return false;
+  e.stopImmediatePropagation();e.preventDefault();const k=bagSel;if(equipItem(k)){bagSel=null;(charOpen?openChar():openBag());toast('Equipped '+it.name);}return true;}
+document.addEventListener('pointerup',e=>{if(e.pointerType!=='mouse'&&tapEq24(e))window.__tapEq24=Date.now();},true);
+document.addEventListener('click',e=>{if(window.__tapEq24&&Date.now()-window.__tapEq24<500){e.stopImmediatePropagation();e.preventDefault();return;}tapEq24(e);},true);
+(function(){let d=null,g=null;document.addEventListener('pointerdown',e=>{const b=e.target.closest&&e.target.closest('.bgrid .bslot');if(!b||b.classList.contains('emp'))return;const k=b.getAttribute('data-v');if(!k||!ITEMS[k]||!ITEMS[k].slot)return;d={k,x:e.clientX,y:e.clientY,moved:false};},true);
+  document.addEventListener('pointermove',e=>{if(!d)return;if(!d.moved&&Math.hypot(e.clientX-d.x,e.clientY-d.y)>10){d.moved=true;g=document.createElement('div');g.id='drag24';g.style.backgroundImage='url('+(ITEM_ICON[d.k]||'')+')';document.body.appendChild(g);bagSel=d.k;light24();}
+    if(g){g.style.left=e.clientX+'px';g.style.top=e.clientY+'px';}},true);
+  const end=e=>{if(!d)return;const wasMoved=d.moved,k=d.k;d=null;if(g){g.remove();g=null;}if(!wasMoved)return;const t=document.elementFromPoint(e.clientX,e.clientY),el=t&&t.closest&&t.closest('.eqgrid .bslot,.pdoll .bslot');window.__dragEnd24=Date.now();
+    if(el&&eqSlotOf24(el)===ITEMS[k].slot){if(equipItem(k)){bagSel=null;(charOpen?openChar():openBag());toast('Equipped '+ITEMS[k].name);}}};
+  document.addEventListener('pointerup',end,true);document.addEventListener('pointercancel',()=>{d=null;if(g){g.remove();g=null;}},true);
+  document.addEventListener('click',e=>{if(window.__dragEnd24&&Date.now()-window.__dragEnd24<350){e.stopImmediatePropagation();e.preventDefault();}},true);})();
+// ===== More fishing + gathering spots (clones of existing nodes near the starting areas) =====
+(function(){let done=false;const _u=update;update=function(dt){_u.apply(this,arguments);if(done||!NPCS.length||!mobs.length)return;done=true;try{
+  const nodes=NPCS.filter(n=>n.node);const far=(x,y,d)=>!NPCS.some(o=>o.node&&Math.hypot(o.x-x,o.y-y)<d*T);const land=t=>t===G||t===SAND||t===ASH;let added=0;
+  // fishing: water tiles that touch land, around each existing fishing spot
+  const fish=nodes.filter(n=>GATHER[n.node].sk==='fishing');
+  for(const base of fish){let k=0;for(let tries=0;tries<400&&k<2;tries++){const a=Math.random()*6.283,r=(6+Math.random()*10);const tx=Math.floor(base.x/T+Math.cos(a)*r),ty=Math.floor(base.y/T+Math.sin(a)*r);
+    if(getT(tx,ty)!==WATER||![[1,0],[-1,0],[0,1],[0,-1]].some(([i,j])=>land(getT(tx+i,ty+j))))continue;const x=(tx+0.5)*T,y=(ty+0.5)*T;if(!far(x,y,5))continue;
+    const n=Object.assign({},base,{x,y,t:0,fc:null,empty23:0});NPCS.push(n);k++;added++;}}
+  // gathering (mining / woodcutting etc.): 2 extra beside each existing non-fishing node
+  for(const base of nodes.filter(n=>GATHER[n.node].sk!=='fishing')){let k=0;for(let tries=0;tries<200&&k<1;tries++){const a=Math.random()*6.283,r=4+Math.random()*6;const tx=Math.floor(base.x/T+Math.cos(a)*r),ty=Math.floor(base.y/T+Math.sin(a)*r);
+    if(!land(getT(tx,ty)))continue;const x=(tx+0.5)*T,y=(ty+0.5)*T;if(blocked(x,y,14)||!far(x,y,3))continue;NPCS.push(Object.assign({},base,{x,y,t:0}));k++;added++;}}
+  window.__nodes24=added;}catch(e){window.__e24c=e.message}};})();
 
 //@@HIP6END@@
 // ---------- v22.5: music batch 3 wiring (interiors, hippodrome, chariot mount loops, town/hub market ambience) ----------

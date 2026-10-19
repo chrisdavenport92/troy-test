@@ -238,9 +238,9 @@ input,textarea{-webkit-user-select:text;user-select:text}
 #dlg .pX{position:absolute;top:6px;right:6px;width:44px;height:44px;min-width:44px;padding:0;margin:0;font-size:22px;line-height:40px;text-align:center;background:#5a2a12;color:#ffe9b0;border:2px solid #1a1008;box-shadow:inset 0 0 0 1px #c8804a;border-radius:6px;z-index:5}
 #dlg>h2:first-of-type{padding-right:50px}
 </style>
-<script>/* v22.6 update check */(function(){var V='30.0.0';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
+<script>/* v22.6 update check */(function(){var V='31.0.0';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
 function mk(){var d=document.createElement('div');d.id='pwGate';d.style.cssText='position:fixed;inset:0;z-index:2147483647;background:#1a1008;display:flex;align-items:center;justify-content:center;font:16px sans-serif;color:#ffe27a';
-d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v30.0 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
+d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v31.0 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
 document.body.appendChild(d);['pointerdown','touchstart','keydown','mousedown'].forEach(function(t){d.addEventListener(t,function(e){e.stopPropagation();},true);});
 document.getElementById('pwF').addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('pwI').value;crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){var x=Array.from(new Uint8Array(b)).map(function(n){return n.toString(16).padStart(2,'0')}).join('');
 if(x===H){try{localStorage.setItem(K,H);}catch(e){}d.remove();}else{document.getElementById('pwE').textContent='Wrong password';document.getElementById('pwI').value='';}});});}
@@ -3231,7 +3231,7 @@ function openBag(){const keep=dlg.style.display==='grid'?dlg.scrollTop:0;
   const eqS=(slot,lbl)=>{const k=P.eq[slot];return '<div class="eqs"><small>'+lbl+'</small>'+(k?slotHTML(k,1,' worn'+(bagSel===k&&!bagCount(k)?' sel':'')):'<button class="bslot emp" data-a="slot" data-v=""><i class="ghost" style="background-image:url('+(SLOT_GHOST[slot]||'')+')"></i></button>')+'</div>';};
   let L='<p style="margin:0 0 3px;color:#ffd75a">Equipped <small>(not in the bag)</small></p><div class="eqgrid">'+EQ_SLOTS.map(sl=>eqS(sl,SLOT_NAME[sl])).join('')+'</div>'+outfitHTML()+'<div class="purse ol">'+coinHTML(P.coins)+'</div>';
   L+='<p style="margin:4px 0 0"><small>Str '+pAtk()+' · Def '+pDef()+' · Magic '+pMagic()+' · Acc '+Math.round(HIT_BASE*100+pAcc())+'%<br>HP '+Math.ceil(P.hp)+'/'+maxHp()+' · Move '+Math.round(mSpeed()/1.6)+'%</small></p>';
-  let g='<div class="bgrid">';for(let i=0;i<BAG_SLOTS;i++){const k=keys[i];g+=k?slotHTML(k,bagCount(k),(bagSel===k?' sel':'')+(ITEMS[k].slot&&!canEquip(k)?' req':'')):'<div class="bslot emp"></div>';}g+='</div>';
+  let g=bagCatBar29()+'<div class="bgrid">';const fk29=keys.filter(bagCatOk29);for(let i=0;i<BAG_SLOTS;i++){const k=fk29[i];g+=k?slotHTML(k,bagCount(k),(bagSel===k?' sel':'')+(ITEMS[k].slot&&!canEquip(k)?' req':'')):'<div class="bslot emp"></div>';}g+='</div>';
   for(let i=BAG_SLOTS;i<keys.length;i++)g+=slotHTML(keys[i],bagCount(keys[i]),' over');
   let D='';const k=bagSel;
   if(k){const it=ITEMS[k],worn=isWorn(k),n=bagCount(k);let acts='';
@@ -8578,6 +8578,200 @@ var W30={log:[]};
   W30.banners=bn;W30.built=1;return true;}
  if(!build()){const sh=V5R.ilios_walls_v5;if(sh)sh.im.addEventListener('load',()=>{try{build();}catch(e){W30.err=String(e&&e.stack||e);}});}
 }catch(e){W30.err=e.message+' '+(e.stack||'').split('\n')[1];console.warn('wall30',e);}})();
+
+
+// ---- v31.0 a: bag category tabs (Gathering / Gear / Weapons / Food-Potions / Blessings), equipment grid fix, timed buff potions ----
+var BAGCAT='all';
+const BAGCATS29=[['all','All'],['gather','Gathering'],['gear','Gear'],['weapons','Weapons'],['food','Food/Potions'],['bless','Blessings']];
+function bagCatOf29(k){const it=ITEMS[k];if(!it)return 'other';
+ if(it.bones||/^sacred_|^hymn_/.test(k))return 'bless';
+ if(it.slot==='weapon'||it.slot==='ammo')return 'weapons';
+ if(it.slot||/^of_/.test(k))return 'gear';
+ if(it.heal||it.mana||it.potBuff)return 'food';
+ if(it.tool||it.kit||/_ore$|_bar$|_ingot$|logs$|^raw_|hide$|pelt$|fur$|silk$|^flax$|^wool$|^feather$|^egg$|meat$|^bat_wing$|^sea_shell$|^bull_horn$|^crab_claw$|^sunstone$|^black_bronze$/.test(k))return 'gather';
+ return 'other';}
+function bagCatOk29(k){return BAGCAT==='all'||bagCatOf29(k)===BAGCAT;}
+function bagCatBar29(){return '<div class="bcat29" role="tablist">'+BAGCATS29.map(c=>'<button class="bc'+(BAGCAT===c[0]?' on':'')+'" data-a="bcat" data-v="'+c[0]+'">'+c[1]+'</button>').join('')+'</div>';}
+dlg.addEventListener('click',e=>{const b=e.target&&e.target.closest?e.target.closest('[data-a="bcat"]'):null;if(!b)return;e.stopPropagation();e.preventDefault();BAGCAT=b.getAttribute('data-v')||'all';openBag();},true);
+(function(){const st=document.createElement('style');st.textContent=
+'.bcat29{display:flex;flex-wrap:wrap;gap:2px;margin:0 0 4px}.bcat29 .bc{flex:1 1 auto;min-width:0;padding:2px 5px;font-size:10px;line-height:1.1;background:linear-gradient(#5c4f40,#3e3429);color:#f0e2c0;border:1px solid #15100b;box-shadow:inset 0 0 0 1px #8a7a62;border-radius:4px 4px 2px 2px;white-space:nowrap}'+
+'.bcat29 .bc.on{background:linear-gradient(#8a3a22,#5e2414);box-shadow:inset 0 0 0 1px #ffcf4a;color:#fff}'+
+'#dlg.dock.bag26 .eqgrid{grid-template-columns:repeat(6,36px)!important;gap:2px 3px!important;max-width:none!important;justify-content:start}'+
+'#dlg.dock.bag26 .eqgrid .eqs{width:36px}#dlg.dock.bag26 .eqgrid .eqs small{font-size:7px;display:block;overflow:hidden;white-space:nowrap;text-overflow:clip;text-align:center;letter-spacing:-0.3px}'+
+'#dlg.dock.bag26 .eqgrid .bslot{width:34px;height:34px;min-width:0;min-height:0}#dlg.dock.bag26 .eqgrid .bslot i{width:26px!important;height:26px!important;margin:-13px 0 0 -13px!important;background-size:26px 26px!important}';
+document.head.appendChild(st);})();
+// ---- buff potions (existing P.buffs system: icons in the HUD, ticking, saved) ----
+const POTBUFF29={vitality_draught:{k:'php',name:'Health',lab:'Max HP',frac:0.25,min:10,t:180,hue:120,price:150,desc:'A thick green draught. +25% Max HP for 3 minutes (heals the extra too).',nm:'Draught of Vitality'},
+ ironskin_draught:{k:'pdef',name:'Defence',lab:'Defence',frac:0.30,min:3,t:180,hue:210,price:150,desc:'Grey-blue and gritty. +30% Defence for 3 minutes (at least +3).',nm:'Ironskin Draught'},
+ might_draught:{k:'patk',name:'Strength',lab:'Strength',frac:0.30,min:3,t:180,hue:28,price:150,desc:'Fiery amber. +30% Strength for 3 minutes (at least +3).',nm:'Draught of Might'}};
+for(const k in POTBUFF29){const d=POTBUFF29[k];ITEMS[k]={name:d.nm,slot:null,potBuff:d,val:d.price,desc:d.desc};SHOP_PRICES[k]=d.price;if(typeof SELL_PRICES==='object'&&SELL_PRICES[k]===undefined)SELL_PRICES[k]=Math.floor(d.price*0.3);}
+{const _mh=maxHp;maxHp=function(){return _mh.apply(this,arguments)+buffV('php');};}
+{const _pa=pAtk;pAtk=function(){return _pa.apply(this,arguments)+buffV('patk');};}
+{const _pd=pDef;pDef=function(){return _pd.apply(this,arguments)+buffV('pdef');};}
+{const _mhBase=maxHp;}
+function potBase29(k){const nowB=P.buffs&&P.buffs[k];let s=0;if(nowB){s=nowB.v;nowB.v=0;}let r;if(k==='php')r=maxHp();else if(k==='patk')r=pAtk();else r=pDef();if(nowB)nowB.v=s;return r;}
+{const _ui2=useItem;useItem=function(k){const it=ITEMS[k];if(!it||!it.potBuff)return _ui2.apply(this,arguments);
+  if(!P.inv[k])return false;const d=it.potBuff,b=P.buffs&&P.buffs[d.k];
+  if(b&&b.t>0){toast(d.name+' boost already active ('+Math.ceil(b.t)+'s left) - potion kept');return false;}
+  if(typeof LEGEND30!=='undefined'&&LEGEND30.on){toast('No potions in Legend mode');return false;}
+  P.inv[k]--;if(P.inv[k]<=0)delete P.inv[k];if(P.quick===k&&!P.inv[k])lastQs='';
+  const base=potBase29(d.k),v=Math.max(d.min,Math.round(base*d.frac));P.buffs=P.buffs||{};P.buffs[d.k]={v,t:d.t,name:d.name,src:k};
+  if(d.k==='php')P.hp=Math.min(maxHp(),P.hp+v);
+  try{sfx('heal');}catch(e){}float(P.x,P.y-48,'+'+v+' '+d.lab,'#ffd75a');log(it.name+': +'+v+' '+d.lab+' for '+d.t+'s');save();return true;};}
+{const _ba=bagActs17;bagActs17=function(k,it,n){let a=_ba.apply(this,arguments);if(it&&it.potBuff&&n>0){a+='<button class="pb" data-a="use" data-v="'+k+'">Drink</button>';}return a;};}
+// icons: recolour the existing potion icon (pixel hue shift, works in WebKit too)
+function potIcons29(){const src=ITEM_ICON.potion_m||ITEM_ICON.potion_l;if(!src)return false;const im=new Image();im.onload=()=>{const w=im.naturalWidth,h=im.naturalHeight;if(!w)return;
+  for(const k in POTBUFF29){const hue=POTBUFF29[k].hue,c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d');g.imageSmoothingEnabled=false;g.drawImage(im,0,0);const id=g.getImageData(0,0,w,h),dd=id.data;
+   for(let i=0;i<dd.length;i+=4){if(!dd[i+3])continue;const r=dd[i]/255,gg=dd[i+1]/255,b=dd[i+2]/255,mx=Math.max(r,gg,b),mn=Math.min(r,gg,b),l=(mx+mn)/2,dl=mx-mn;if(dl<0.12)continue;const s=dl/(1-Math.abs(2*l-1));if(s<0.3)continue;
+    const q=(p,qq,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(qq-p)*6*t;if(t<1/2)return qq;if(t<2/3)return p+(qq-p)*(2/3-t)*6;return p;},hh=hue/360,Q=l<0.5?l*(1+s):l+s-l*s,Pp=2*l-Q;
+    dd[i]=Math.round(q(Pp,Q,hh+1/3)*255);dd[i+1]=Math.round(q(Pp,Q,hh)*255);dd[i+2]=Math.round(q(Pp,Q,hh-1/3)*255);}
+   g.putImageData(id,0,0);ITEM_ICON[k]=c.toDataURL();}try{if(dlg.style.display==='grid'&&TAB_OPEN===null&&CUR_TAB==='bag')openBag();}catch(e){}};im.src=src;return true;}
+{let n=0;const iv=setInterval(()=>{n++;if(potIcons29()||n>40)clearInterval(iv);},400);}
+// Tester Mode inventory: a stack of each buff potion
+{const _t=testerMode19;testerMode19=function(){const r=_t.apply(this,arguments);try{for(const k in POTBUFF29){if(bagCount(k)>0||bagUsed()<BAG_SLOTS)P.inv[k]=(P.inv[k]||0)+10;else{P.bank=P.bank||{};P.bank[k]=(P.bank[k]||0)+10;}}save();}catch(e){console.warn('tester29',e);}return r;};}
+// persist potion buffs across reload (stored inside the v17 save block)
+{const _sj=saveJSON;saveJSON=function(){try{const o={};for(const k of ['php','pdef','patk']){const b=P.buffs&&P.buffs[k];if(b&&b.t>0)o[k]=b;}V().pb31=o;}catch(e){}return _sj.apply(this,arguments);};}
+{const _rl=restedOnLoad;restedOnLoad=function(){const r=_rl.apply(this,arguments);try{const o=V().pb31;if(o){P.buffs=P.buffs||{};for(const k in o)if(o[k]&&o[k].t>0)P.buffs[k]=o[k];}}catch(e){}return r;};}
+
+// bag equipment grid: 5 columns, short labels (nothing clipped at 844x390 / 932x430)
+{const st=document.createElement('style');st.textContent='#dlg.dock.bag26 .eqgrid{grid-template-columns:repeat(5,44px)!important;gap:3px 4px!important}#dlg.dock.bag26 .eqgrid .eqs{width:44px}#dlg.dock.bag26 .eqgrid .eqs small{font-size:8px;letter-spacing:0;overflow:visible;text-overflow:clip}#dlg.dock.bag26 .eqgrid .bslot{width:36px;height:36px;margin:0 auto}';document.head.appendChild(st);}
+const EQSHORT32={Weapon:'Weapon',Necklace:'Neck','Hands/Feet':'Hands'};
+{const _ob2=openBag;openBag=function(){const r=_ob2.apply(this,arguments);try{dlg.querySelectorAll('.eqs small, .eqg small, .outf small').forEach(sm=>{const t=sm.textContent.trim();if(EQSHORT32[t])sm.textContent=EQSHORT32[t];});}catch(e){}return r;};}
+
+// ---- v31.0 b: new phased bosses + Normal/Elite modes in the Boss Arena (menu), name bar, guaranteed drops, titles ----
+const B31={
+ b31_crab:{base:'crab',name:'Old Shellback',lv:6,min:3,hp:7,atk:1.3,r:22,add:'viper',addLv:-2,hint:'Beach',drops:['wool_robe','bronze_dagger'],tt:'Shellback-Cracker',w:'crab'},
+ b31_mother:{base:'wolf',name:"Mother Greyfang",lv:11,min:7,hp:6,atk:1.3,r:20,add:'wolf',addLv:-3,hint:"Fields den",drops:['boar_leather','bronze_breastplate'],tt:'Den-Breaker',w:'boar'},
+ b31_cove:{base:'bandit',name:'Captain Dren',lv:9,min:6,hp:7,atk:1.35,r:18,add:'bandit',addLv:-3,hint:'Bandit Cove',drops:['bronze_dagger','bronze_breastplate'],tt:'Cove-Cleaner',w:'bandit'},
+ b31_sentinel:{base:'hoplite',name:'Bronze Sentinel',lv:22,min:18,hp:7,atk:1.35,r:20,add:'hoplite',addLv:-4,hint:'Ilios walls',drops:['gate_cuirass'],tt:'Sentinel Breaker',w:'sen',th:[0.66,0.33]},
+ b31_spider:{base:'spider',name:'Matriarch Weaver',lv:26,min:22,hp:7,atk:1.35,r:22,add:'spider',addLv:-4,hint:'Ida web nest',drops:['warden_legs','packlead_head'],tt:'Weaver-Bane',w:'spider'},
+ b31_night:{base:'batd',name:'Bat Queen of the Deep',lv:14,min:10,hp:7,atk:1.4,r:20,add:'bat',addLv:-3,hint:'Cave, night fight',drops:['batwing_cape','pbronze_boots'],tt:'Night-Walker',w:'cave'},
+ b31_hip1:{base:'veteran',name:'Hippodrome Gladiator',lv:18,hp:3,atk:1.1,r:18,hidden:1},
+ b31_hip2:{base:'hound',name:'Hippodrome Beast-Master',lv:19,hp:4,atk:1.2,r:18,hidden:1},
+ b31_hip3:{base:'champion',name:'Gladiator Champion Kallias',lv:20,hp:6,atk:1.4,r:22,hidden:1,w:'hippo',min:16,hint:'Hippodrome gate',drops:['oracle_robe','champion_leather','gate_cuirass'],tt:'Hippodrome Champion'},
+ // Arena-only bosses (no world spawn)
+ b31_dune:{base:'viper',name:'Dune Queen Sethis',lv:5,min:2,hp:8,atk:1.3,r:20,add:'viper',addLv:-2,hint:'Arena only',drops:['wool_robe','bronze_dagger'],tt:'Dune-Walker'},
+ b31_lerna:{base:'viper',name:'Reed Hydra Lerneia',lv:18,min:14,hp:8,atk:1.35,r:24,add:'viper',addLv:-3,hint:'Arena only',drops:['wool_robe','warden_legs'],tt:'Hydra-Bane'},
+ b31_aello:{base:'harpy',name:'Harpy-Queen Aello',lv:24,min:20,hp:7,atk:1.4,r:22,add:'harpy',addLv:-4,hint:'Arena only',drops:['batwing_cape','packlead_head'],tt:'Storm-Caller'},
+ b31_boarx:{base:'ashboar',name:'Iron Boar of Erymanthos',lv:28,min:24,hp:8,atk:1.4,r:22,add:'ashboar',addLv:-4,hint:'Arena only',drops:['boar_leather','warden_cuirass'],tt:'Boar-Hunter'},
+ b31_dagan:{base:'berserker',name:'Warchief Dagan the Ash-Born',lv:34,min:30,hp:8,atk:1.45,r:20,add:'raider',addLv:-4,hint:'Arena only',drops:['packlead_leather','wolfking_pike'],tt:'Warchief-Breaker'},
+ b31_orthros:{base:'hound',name:'Orthros, Hound of the Dead',lv:40,min:36,hp:9,atk:1.5,r:20,add:'hound',addLv:-5,hint:'Arena only',drops:['wolfking_cape','bear_splitter'],tt:'Hound-Tamer'},
+ b31_talos:{base:'champion',name:'Talos, the Bronze Giant',lv:50,min:44,hp:10,atk:1.6,r:26,add:'hoplite',addLv:-6,hint:'Arena only',drops:['gate_cuirass','champion_leather','oracle_robe'],tt:'Giant-Breaker'}};
+B31.b31_hippo={name:'Gladiator Champion Kallias',lv:20,min:16,hint:'3 rounds',drops:['oracle_robe','champion_leather','gate_cuirass'],tt:'Hippodrome Champion',rounds:['b31_hip1','b31_hip2','b31_hip3'],add:'hoplite',addLv:-4,r:22};
+for(const k in B31){const d=B31[k];if(!d.base)continue;if(!MOBS[d.base]){console.warn('b31 base missing',d.base);}zClone(k,d.base,{name:d.name,lv:[d.lv,d.lv],hpMult:d.hp,atkMult:d.atk,mini:true,big:true,passive:false,aggro:Math.max(300,MOBS[d.base].aggro||0),r:d.r,xpMult:3,resp:99999,sc:MOBS[d.base].sc||3});
+ if(typeof V5MOB!=='undefined'&&V5MOB[d.base])V5MOB[k]=V5MOB[d.base];}
+MOBS.b31_hippo=MOBS.b31_hip3;
+// titles
+for(const k in B31){const d=B31[k];if(!d.tt)continue;TITLES['b31_'+k]={name:d.tt,how:'Defeat '+d.name+' in the Arena'};TITLES['el_'+k]={name:'Elite '+d.tt,how:'Defeat '+d.name+' in Elite mode'};}
+const B31PHASED={bull:{add:'boar',addLv:-3},lykaon:{add:'wolf',addLv:-3}};
+const B31OLD={bull:['Bull-Tamer','Red Bull of Thymbra'],batqueen:['Swarm-Breaker','Mother of the Swarm'],kyknos:['Kyknos-Breaker','Kyknos the Unbowed'],champion:['Myrmidon-Slayer','Myrmidon Champion'],greyfang:['Greyfang-Hunter','Greyfang the Pack-Leader'],ursa:['Ursa-Hunter','Old Ursa'],captain:['Lysandros-Bane','Captain Lysandros'],warlord:['Brannoc-Bane','Brannoc the Red']};
+for(const k in B31OLD)TITLES['el_'+k]={name:'Elite '+B31OLD[k][0],how:'Defeat '+B31OLD[k][1]+' in Elite mode'};
+const B31OLD_DROPS={bull:['boar_leather','bronze_breastplate','wool_robe'],batqueen:['batwing_cape','cowhide_head','pbronze_boots'],kyknos:['bronze_breastplate','champion_leather'],champion:['champion_leather','oracle_robe','gate_cuirass'],greyfang:['wolfking_cape','wolfking_pike','packlead_leather'],ursa:['bear_splitter','warden_cuirass','packlead_head','warden_legs'],captain:['warden_cuirass','warden_legs'],warlord:['packlead_leather','packlead_head']};
+for(const k of BA_LIST){if(!TITLES['el_'+k]&&MOBS[k])TITLES['el_'+k]={name:'Elite '+MOBS[k].name.replace(/^(The |Old )/,'').split(' ')[0]+'-Slayer',how:'Defeat '+MOBS[k].name+' in Elite mode'};}
+// list order by level, new bosses included
+for(const k in B31)if(!B31[k].hidden&&!BA_LIST.includes(k))BA_LIST.push(k);
+BA_LIST.sort((a,b)=>(MOBS[a]&&MOBS[a].lv[0]||0)-(MOBS[b]&&MOBS[b].lv[0]||0));
+{const _bu=baUnlocked;baUnlocked=function(k){if(B31[k]&&B31[k].min){const v=seaSt();return !!(v.tester||v.ba.k[k]||v.ba.wins[k]||P.lvl>=B31[k].min);}return _bu(k);};}
+function el31(k){const v=seaSt();return !!(v.tester||(v.ba.wins[k]>0));}
+function bossName31(k){return B31[k]?B31[k].name:(MOBS[k]&&MOBS[k].name)||k;}
+function bossLv31(k){return B31[k]?B31[k].lv:MOBS[k].lv[0];}
+function bossFight31(k,elite){if(ARENA.on){toast('Finish your current fight first');return false;}if(!baUnlocked(k)){toast('Not unlocked yet');return false;}if(elite&&!el31(k)){toast('Beat it on Normal first to unlock Elite');return false;}
+ const lv=bossLv31(k),ttl='Arena · '+bossName31(k)+(elite?' (Elite)':'');
+ let ok;if(k==='thalassor'){if(elite)return false;ok=instStart('boss','deck',[[['thalassor',1,0],['tentacle',3,-2]]],Math.max(SHIP_LVL,lv),ttl,{type:k,lv,m31:0});}
+ else if(B31[k]&&B31[k].rounds){ok=instStart('boss','boss',B31[k].rounds.map((t,i)=>[[t,1,0]]),lv,ttl,{type:k,lv,m31:1,el:!!elite,th:elite?[0.66,0.33]:[0.5],rounds:3});}
+ else{ok=instStart('boss','boss',[[[k,1,0]]],lv,ttl,{type:k,lv,m31:(elite||B31[k]||B31PHASED[k])?1:0,el:!!elite,th:elite?[0.66,0.33]:((B31[k]&&B31[k].th)||((B31[k]||B31PHASED[k])?[0.5]:[]))});}
+ if(ok){toast((elite?'ELITE · ':'Arena: ')+bossName31(k));sfx('quest');}return ok;}
+// scaling + marking at spawn
+{const _is=instSpawn;instSpawn=function(type,lv,x,y,extra){const o=_is.apply(this,arguments);const m=INST.meta;if(m&&m.m31&&INST.kind==='boss'&&!INST.addFlag){o.b31=1;if(m.el){o.maxHp=Math.round(o.maxHp*2.2);o.hp=o.maxHp;o.atk=Math.round(o.atk*1.5);}}return o;};}
+function give31(k,n){if(!ITEMS[k])return;if(!giveItem(k,n)){P.bank=P.bank||{};P.bank[k]=(P.bank[k]||0)+n;log(ITEMS[k].name+' sent to your bank (bag full)');}}
+{const _ae=arenaEnd;arenaEnd=function(win,msg){const meta=INST.meta||{};if(!(instOn()&&ARENA.mode==='boss'&&meta.m31!==undefined&&meta.type)||!win){hideBar31();return _ae.apply(this,arguments);}
+ const k=meta.type,el=!!meta.el,secs=now-INST.t0-3,v=seaSt(),pb=v.ba.best[k],pw=v.ba.wins[k];_ae.apply(this,arguments);hideBar31();
+ if(!el&&meta.rounds)v.ba.best[k]=(pb===undefined||secs<pb)?Math.round(secs*10)/10:pb;
+ const kk=el?'e_'+k:k,lv=meta.lv||1,sil=2+Math.floor(lv/5);
+ if(el){v.ba.best[k]=pb;v.ba.wins[k]=pw;if(pw===undefined)delete v.ba.wins[k];if(pb===undefined)delete v.ba.best[k];}
+ const prev=v.ba.best[kk],nb=!prev||secs<prev;if(el){v.ba.wins[kk]=(v.ba.wins[kk]||0)+1;if(nb)v.ba.best[kk]=Math.round(secs*10)/10;}
+ const rw=[];
+ if(el){const b=sil*2*BRONZE_PER_SILVER;P.coins+=b;lootToast('coin',b);rw.push('+'+(sil*3)+' silver total');const pool=(B31[k]&&B31[k].drops)||B31OLD_DROPS[k]||(DROPS[k]||[]).map(x=>x[0]);const it=pool.filter(x=>ITEMS[x]);if(it.length){const g=it[Math.floor(Math.random()*it.length)];give31(g,1);rw.push(ITEMS[g].name);}
+  const pk=['vitality_draught','ironskin_draught','might_draught'];give31(pk[Math.floor(Math.random()*3)],2);rw.push('2 buff draughts');if(TITLES['el_'+k]&&grantTitle('el_'+k))rw.push('title '+TITLES['el_'+k].name);gainXp(Math.round(xpNeed(P.lvl)*0.03));}
+ else if(B31[k]){const pk=['vitality_draught','ironskin_draught','might_draught'];give31(pk[Math.floor(Math.random()*3)],1);rw.push('a buff draught');if(TITLES['b31_'+k]&&grantTitle('b31_'+k))rw.push('title '+TITLES['b31_'+k].name);}
+ if(rw.length)log('<span style="color:#ffd75a">'+(el?'Elite':'Arena')+' rewards:</span> '+rw.join(', '));
+ if(el)toast('ELITE cleared in '+fmtSecs(secs)+(nb?' · new best!':''));save();};}
+// ---- boss mechanics: name bar, phases, telegraphed attacks ----
+function bar31(){let d=document.getElementById('bar31');if(!d){d=document.createElement('div');d.id='bar31';d.style.cssText='position:fixed;top:calc(50px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:40;pointer-events:none;width:min(300px,50vw);font:bold 11px sans-serif;color:#fff;text-shadow:0 1px 2px #000;text-align:center';d.innerHTML='<div class="n"></div><div style="height:9px;background:#2a1008;border:1px solid #000;box-shadow:0 0 0 1px #c9a24a;border-radius:3px;overflow:hidden;position:relative"><i style="display:block;height:100%;width:100%;background:linear-gradient(#e0402a,#962010)"></i><b style="position:absolute;top:0;bottom:0;width:2px;background:#000;opacity:.6;left:66%" class="t1"></b><b style="position:absolute;top:0;bottom:0;width:2px;background:#000;opacity:.6;left:33%" class="t2"></b></div>';document.body.appendChild(d);}return d;}
+function hideBar31(){const d=document.getElementById('bar31');if(d)d.style.display='none';}
+function boss31Tick(dt){const m=INST.meta;if(!instOn()||INST.kind!=='boss'||!m||!m.m31||P.dead){hideBar31();return;}
+ const B=mobs.find(o=>o.inst&&o.alive&&o.b31&&!o.add31);if(!B){hideBar31();return;}
+ const s=B.s31||(B.s31={ph:1,cd:2.6,k:B.type});const th=m.th||[],r=B.hp/B.maxHp;let ph=1;for(const t of th)if(r<t)ph++;
+ const d=B31[m.type]||B31PHASED[m.type]||{};
+ if(ph>s.ph){s.ph=ph;B.atk=Math.round(B.atk*1.2);s.cd=1.5;heavyFx(5,0.06);sfx('levelup');toast('PHASE '+ph+': '+bossName31(m.type)+' grows furious!');float(B.x,B.y-70,'PHASE '+ph,'#ff6b5b');
+  if(d.add){const n=m.el?3:2;INST.addFlag=true;const q=instInner();for(let i=0;i<n;i++){const a=instSpawn(d.add,Math.max(1,ARENA.L+(d.addLv||-3)),Math.max(q.x0+20,Math.min(q.x1-20,B.x+(i-(n-1)/2)*T*2)),Math.max(q.y0+20,Math.min(q.y1-20,B.y+T*1.5)),{});a.add31=1;}INST.addFlag=false;}}
+ s.cd-=dt;if(s.cd<=0&&ARENA.t<=0){const e=m.el?0.8:1;s.cd=Math.max(2.2,(5.2-0.8*s.ph)*e);const atk=B.atk,dur=(m.el?0.9:1.15),R=m.el?60:54;
+  const pat=s.ph===1?'slam':s.ph===2?(Math.random()<0.5?'ring':'slam'):(Math.random()<0.5?'line':'ring');
+  B.roarT=0.6;
+  if(pat==='slam'){teleAdd({kind:'circle',x:P.x,y:P.y,r:R,dur,dm:atk*0.9,msg:'Slam!'});}
+  else if(pat==='ring'){for(let i=0;i<3;i++){const a=i*2.094+now,x=P.x+Math.cos(a)*(i?T*1.6:0),y=P.y+Math.sin(a)*(i?T*1.1:0);teleAdd({kind:'circle',x,y,r:R-6,dur:dur+i*0.12,dm:atk*0.8});}toast('Watch the ground!');}
+  else{const q=instInner(),dx=P.x-B.x,dy=P.y-B.y,L=Math.hypot(dx,dy)||1;for(let i=1;i<=5;i++){const x=Math.max(q.x0,Math.min(q.x1,B.x+dx/L*i*T*1.5)),y=Math.max(q.y0,Math.min(q.y1,B.y+dy/L*i*T*1.5));teleAdd({kind:'circle',x,y,r:R-10,dur:dur+i*0.14,dm:atk*0.8});}toast('Charging barrage!');}}
+ const bar=bar31();bar.style.display='block';const nm=(m.el?'ELITE ':'')+B.b31name;bar.querySelector('.n').textContent=(m.el?'★ ':'')+bossName31(B.type.startsWith('b31_hip')?'b31_hippo':m.type)+(m.rounds?(' · '+MOBS[B.type].name+' · Round '+(ARENA.wave+1)+'/'+m.rounds):'')+' · Phase '+s.ph+'/'+(th.length+1);
+ bar.querySelector('i').style.width=Math.max(0,B.hp/B.maxHp*100)+'%';bar.querySelector('i').style.background=m.el?'linear-gradient(#b040e0,#5a1080)':'linear-gradient(#e0402a,#962010)';
+ bar.querySelector('.t1').style.display=th.length>1?'':'none';bar.querySelector('.t2').style.display=th.length>1?'':'none';if(th.length===1){bar.querySelector('.t1').style.display='';bar.querySelector('.t1').style.left='50%';}else bar.querySelector('.t1').style.left='66%';}
+{const _it=instTick;instTick=function(dt){_it.apply(this,arguments);try{boss31Tick(dt);}catch(e){if(!window.__b31err){window.__b31err=1;console.warn('boss31',e);}}};}
+// Arena menu: scrolling list, Normal / Elite per boss
+function openBossArena(){const v=seaSt();const rows=BA_LIST.map(k=>{const d=MOBS[k];if(!d)return '';const u=baUnlocked(k),lv=bossLv31(k),nb=v.ba.best[k],nw=v.ba.wins[k]||0,eb=v.ba.best['e_'+k],ew=v.ba.wins['e_'+k]||0,eu=u&&el31(k)&&k!=='thalassor';
+  const st=(b,w)=>b?fmtSecs(b)+' · '+w+'W':'no clear';
+  return '<div class="bc31'+(u?'':' lock')+'"><div class="bn"><b>'+(u?'':'🔒 ')+bossName31(k)+''+'</b><small>Lv '+lv+(B31[k]&&B31[k].hint?' · '+B31[k].hint:'')+(u?'':' · '+(B31[k]&&B31[k].min?'reach Lv '+B31[k].min:'beat it in the world first'))+'</small></div>'
+   +'<button class="pb" data-a="bf31" data-v="'+k+':n"'+(u?'':' disabled')+'>Normal<small>'+st(nb,nw)+'</small></button>'
+   +'<button class="pb el" data-a="bf31" data-v="'+k+':e"'+(eu?'':' disabled')+'>★ Elite<small>'+(k==='thalassor'?'n/a':eu?st(eb,ew):'win Normal')+'</small></button></div>';}).join('');
+ openPanel('<h2>🏟️ Arena</h2><details class="ba31n"><summary>Modes &amp; rewards (tap)</summary><small><b>Normal:</b> the boss as it is (new bosses, Red Bull and Lykaon have 2 phases and telegraphed ground attacks). Reward: silver + half XP (new bosses also a buff draught and a title on first win). <b>Elite</b> (unlocks after a Normal win): 2.2x HP, +50% damage, an extra phase, faster attacks. Reward: 3x silver, a guaranteed gear drop, 2 buff draughts, an Elite title. Best time and wins are kept per mode. Fall and you wake where you were, nothing lost.</small></details><div class="ba31">'+rows+'</div>');}
+dlg.addEventListener('click',e=>{const b=e.target&&e.target.closest?e.target.closest('[data-a="bf31"]'):null;if(!b)return;e.stopPropagation();e.preventDefault();const [k,m]=(b.getAttribute('data-v')||'').split(':');bossFight31(k,m==='e');},true);
+(function(){const st=document.createElement('style');st.textContent='.ba31{max-height:calc(100vh - 235px);overflow-y:auto;-webkit-overflow-scrolling:touch;padding-right:4px;margin-top:4px}.ba31n{margin:2px 0;font-size:11px}.ba31n summary{cursor:pointer;color:#7a3a10}.ba31n[open]{max-height:90px;overflow-y:auto}'+
+'.bc31{display:flex;align-items:center;gap:4px;margin:0 0 4px;padding:3px 4px;background:rgba(0,0,0,.08);border-radius:6px}.bc31.lock{opacity:.65}.bc31 .bn{flex:1 1 auto;min-width:0;line-height:1.15}.bc31 .bn b{display:block;font-size:12px}.bc31 .bn small{font-size:10px}'+
+'.bc31 .pb{flex:0 0 auto;width:84px;padding:2px 3px;font-size:11px;line-height:1.1}.bc31 .pb small{display:block;font-size:9px;font-weight:normal}.bc31 .pb.el{background:linear-gradient(#7a3a9a,#4a1a68)}.bc31 .pb:disabled{opacity:.45}'+
+'@media (max-height:440px){.ba31{max-height:calc(100vh - 168px);min-height:120px}}';document.head.appendChild(st);})();
+
+{const _obx=openBossArena;openBossArena=function(){_obx.apply(this,arguments);try{const det=dlg.querySelector('details.ba31n');if(det){const sm=det.querySelector('small');const dv=document.createElement('div');dv.className='ba31n';dv.innerHTML='<button class="pb" data-a="bi32" style="padding:1px 8px;font-size:11px">ⓘ Modes &amp; rewards</button><div class="inf" style="display:none;font-size:11px;max-height:70px;overflow-y:auto">'+(sm?sm.innerHTML:'')+'</div>';det.replaceWith(dv);}{const lst=dlg.querySelector('.ba31');if(lst){let n=lst.nextElementSibling;while(n){const nx=n.nextElementSibling;lst.appendChild(n);n=nx;}}}}catch(e){}};}
+dlg.addEventListener('click',e=>{const b=e.target&&e.target.closest?e.target.closest('[data-a="bi32"]'):null;if(!b)return;e.stopPropagation();e.preventDefault();const i=b.parentElement.querySelector('.inf');i.style.display=i.style.display==='none'?'block':'none';},true);
+
+// ---- v31.0 c: the new bosses in the open world (Normal-mode versions), with phases, name bar, guaranteed drops and titles ----
+var W31={list:[],done:false};
+function w31spot(w){const R=(t)=>SPAWNS.find(s=>s[0]===t);let s=null;
+ if(w==='crab')s=R('crab');else if(w==='boar')s=SPAWNS.filter(x=>x[0]==='boar')[1]||R('boar');else if(w==='bandit')s=R('bandit');else if(w==='spider')s=R('spider');
+ if(s)return [s[1],s[2],s[3],s[4]];
+ if(w==='cave')return [297,301,200,206];
+ if(w==='hippo'){const n=NPCS.find(q=>q.id==='hippo_gate');if(n){const x=Math.floor(n.x/T),y=Math.floor(n.y/T);return [x-6,x-3,y+2,y+5];}}
+ if(w==='sen'){const n=NPCS.find(q=>q.id==='hippo_gate');if(n){const x=Math.floor(n.x/T),y=Math.floor(n.y/T);return [x+3,x+6,y+2,y+5];}}
+ return null;}
+function world31(){if(W31.done)return;if(!NPCS.find(q=>q.id==='hippo_gate'))return;W31.done=true;for(const k in B31){const d=B31[k];if(!d.w)continue;const r=w31spot(d.w);if(!r){console.warn('w31 no spot',k);continue;}
+  const o={type:k,sp:[k,r[0],r[1],r[2],r[3],1]};makeMob(o);o.b31w=1;o.hx=o.x;o.hy=o.y;mobs.push(o);W31.list.push([k,o]);}
+ for(const k of ['bull','lykaon']){const o=mobs.find(m=>m.type===k);if(o)o.b31w=1;}}
+function w31add(m,d,n){const lv=Math.max(1,m.lv+(d.addLv||-3));for(let i=0;i<n;i++){const o={type:d.add,sp:[d.add,0,0,0,0,1],temp:true};makeMob(o);const dd=MOBS[d.add];o.lv=lv;o.maxHp=Math.round((15+16*(lv-1))*(dd.hpMult||1));o.hp=o.maxHp;o.atk=Math.round((3+2*(lv-1))*(dd.atkMult||1));o.def=Math.floor(lv*0.6);o.x=m.x+(i-(n-1)/2)*50;o.y=m.y+50;o.hx=o.x;o.hy=o.y;o.state='chase';o.hostile=true;o.add31=1;mobs.push(o);}}
+function w31tick(dt){if(instOn()||P.dead)return;world31();
+ let near=null,nd=1e9;for(const m of mobs){if(!m.b31w||!m.alive)continue;const dd=Math.hypot(m.x-P.x,m.y-P.y);if(dd<nd){nd=dd;near=m;}}
+ const bar=document.getElementById('bar31');
+ if(!near||nd>9*T||!(near.state==='chase'||near.state==='attack'||target===near||near.hp<near.maxHp)){if(bar&&!instOn())bar.style.display='none';return;}
+ const d=B31[near.type]||B31PHASED[near.type]||{};
+ const th=d.th||[0.5];let ph=1;for(const t of th)if(near.hp<near.maxHp*t)ph++;near.ph2=near.ph2||0;
+ if(ph>(near.phN||1)){near.phN=ph;near.ph2=1;near.atk=Math.round(near.atk*1.2);heavyFx(5,0.06);sfx('levelup');toast('PHASE '+ph+': '+MOBS[near.type].name+' grows furious!');float(near.x,near.y-70,'PHASE '+ph,'#ff6b5b');if(d.add)w31add(near,d,2);}
+ const b=bar31();b.style.display='block';b.querySelector('.n').textContent=MOBS[near.type].name+' · Lv '+near.lv+' · Phase '+(near.phN||1)+'/'+(th.length+1)+(near.sen&&!near.sen.broken?' · Arm '+Math.max(0,Math.ceil(near.sen.arm/near.sen.armMax*100))+'%':'');b.querySelector('i').style.width=Math.max(0,near.hp/near.maxHp*100)+'%';b.querySelector('i').style.background='linear-gradient(#e0402a,#962010)';b.querySelector('.t1').style.display='';b.querySelector('.t2').style.display=th.length>1?'':'none';b.querySelector('.t1').style.left=th.length>1?'66%':'50%';}
+{const _up=update;update=function(dt){_up.apply(this,arguments);try{w31tick(dt);}catch(e){if(!window.__w31e){window.__w31e=1;console.warn('w31',e);}}};}
+{const _ok2=onKill;onKill=function(m){_ok2(m);try{if(!m.b31w||m.inst)return;const k=m.type,d=B31[k]||{},nm=MOBS[k].name;const v=seaSt();v.ba.k[k]=1;
+  const pool=((d.drops)||B31OLD_DROPS[k]||[]).filter(x=>ITEMS[x]);if(pool.length){const g=pool[Math.floor(Math.random()*pool.length)];give31(g,1);}if(k==='b31_sentinel'&&ITEMS.gate_cuirass&&pool.indexOf('gate_cuirass')<0)give31('gate_cuirass',1);
+  const pk=['vitality_draught','ironskin_draught','might_draught'];give31(pk[Math.floor(Math.random()*3)],1);
+  if(TITLES['b31_'+k])grantTitle('b31_'+k);else if(B31PHASED[k]&&TITLES['el_'+k]){}
+  log('<span style="color:#ffd75a">'+nm+' falls!</span> Guaranteed drop and a buff draught.'+(v.ba.wins[k]?'':' It is now unlocked in the Arena (Normal, then Elite).'));toast(nm+' is down!');}catch(e){console.warn('w31kill',e);}};}
+
+// ---- Bronze Sentinel (world): dormant statue, wakes when you come near, line ground-slams, breakable arm, 3 phases ----
+W31.tele=[];
+function sen31(m,dt){if(!m.sen)m.sen={awake:false,arm:Math.round(m.maxHp*0.2),armMax:Math.round(m.maxHp*0.2),broken:false,cd:3,lastHp:m.hp};const s=m.sen;
+ if(!s.awake){m.state='idle';m.x=m.hx;m.y=m.hy;m.hp=m.maxHp;if(Math.hypot(P.x-m.x,P.y-m.y)<6*T){s.awake=true;s.cd=2.5;heavyFx(6,0.08);sfx('levelup');toast('The Bronze Sentinel awakens!');float(m.x,m.y-80,'AWAKE','#ffd75a');}return;}
+ if(!s.broken){if(m.hp<s.lastHp){const loss=s.lastHp-m.hp;s.arm-=loss;m.hp=s.lastHp;if(s.arm<=0){s.broken=true;m.atk=Math.round(m.atk*0.75);heavyFx(6,0.08);toast('The Sentinel\'s arm shatters! Its blows weaken.');float(m.x,m.y-80,'ARM BROKEN','#9fe8ff');m.hp=Math.max(1,m.hp);}}}
+ s.lastHp=m.hp;
+ s.cd-=dt;if(s.cd<=0&&Math.hypot(P.x-m.x,P.y-m.y)<10*T){const ph=m.phN||1;s.cd=Math.max(2.4,6.2-1.2*ph);const a=Math.atan2(P.y-m.y,P.x-m.x),L=(s.broken?6:8)*T;const lines=[a];if(ph>=3)lines.push(a+Math.PI/2,a-Math.PI/2);else if(ph>=2)lines.push(a+0.45,a-0.45);
+  for(const q of lines)W31.tele.push({x:m.x,y:m.y,a:q,L,w:34,t:0,dur:1.1,dm:m.atk*0.9});toast('Ground slam! Move off the line.');m.wind=0.6;}
+}
+function w31teleTick(dt){for(let i=W31.tele.length-1;i>=0;i--){const e=W31.tele[i];e.t+=dt;if(e.t>=e.dur){W31.tele.splice(i,1);const dx=Math.cos(e.a),dy=Math.sin(e.a),px=P.x-e.x,py=P.y-e.y,pr=px*dx+py*dy,perp=Math.abs(px*dy-py*dx);if(pr>0&&pr<e.L&&perp<e.w+P.r*0.5){aoeHit(e.dm,null);}burst(e.x+dx*e.L*0.5,e.y+dy*e.L*0.5,'#e8d8b0',10,true);heavyFx(3,0.03);}}}
+{const _up2=update;update=function(dt){_up2.apply(this,arguments);try{if(!instOn()&&!P.dead){world31();for(const [k,m] of W31.list)if(k==='b31_sentinel'&&m.alive)sen31(m,dt);w31teleTick(dt);}else if(W31.tele.length)W31.tele.length=0;}catch(e){if(!window.__s31e){window.__s31e=1;console.warn('sen31',e);}}};}
+{const _dt=drawTelegraphs;drawTelegraphs=function(){_dt.apply(this,arguments);try{for(const e of W31.tele){const f=e.t/e.dur;cx.save();cx.translate(e.x,e.y);cx.rotate(e.a);cx.fillStyle='rgba(255,60,40,'+(0.18+0.25*f)+')';cx.fillRect(0,-e.w,e.L,e.w*2);cx.strokeStyle='rgba(255,200,120,.9)';cx.lineWidth=2;cx.strokeRect(0,-e.w,e.L,e.w*2);cx.fillStyle='rgba(255,90,60,'+(0.35*f)+')';cx.fillRect(0,-e.w,e.L*f,e.w*2);cx.restore();}}catch(er){}};}
+{const _hm2=hitMob;hitMob=function(m,mult,splash){if(m&&m.type==='b31_sentinel'&&m.sen&&!m.sen.awake)return;return _hm2.apply(this,arguments);};}
 
 
 //@@HIP6END@@

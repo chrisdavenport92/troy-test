@@ -238,9 +238,9 @@ input,textarea{-webkit-user-select:text;user-select:text}
 #dlg .pX{position:absolute;top:6px;right:6px;width:44px;height:44px;min-width:44px;padding:0;margin:0;font-size:22px;line-height:40px;text-align:center;background:#5a2a12;color:#ffe9b0;border:2px solid #1a1008;box-shadow:inset 0 0 0 1px #c8804a;border-radius:6px;z-index:5}
 #dlg>h2:first-of-type{padding-right:50px}
 </style>
-<script>/* v22.6 update check */(function(){var V='35.1.0';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
+<script>/* v22.6 update check */(function(){var V='35.2.0';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
 function mk(){var d=document.createElement('div');d.id='pwGate';d.style.cssText='position:fixed;inset:0;z-index:2147483647;background:#1a1008;display:flex;align-items:center;justify-content:center;font:16px sans-serif;color:#ffe27a';
-d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v35.1 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
+d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v35.2 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
 document.body.appendChild(d);['pointerdown','touchstart','keydown','mousedown'].forEach(function(t){d.addEventListener(t,function(e){e.stopPropagation();},true);});
 document.getElementById('pwF').addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('pwI').value;crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){var x=Array.from(new Uint8Array(b)).map(function(n){return n.toString(16).padStart(2,'0')}).join('');
 if(x===H){try{localStorage.setItem(K,H);}catch(e){}d.remove();}else{document.getElementById('pwE').textContent='Wrong password';document.getElementById('pwI').value='';}});});}
@@ -317,7 +317,7 @@ const SHELL_DROP_CHANCE=0.75; // crabs drop Sea Shells while the shell quest is 
 const BEACH_XP_MULT=0.3; // beach mobs give reduced XP: 5 beach quests (+their kills) ~ Lv3, then grind beach mobs to Lv5
 let GATE_X=45; // x of the Sigeion Shore barricade (see GATE_REQS)
 const QUEST_SAVE_VER=4;
-let bagMigrated=''; const BAG_SLOTS=40; // inventory stacks (equipped gear doesn't count)
+let bagMigrated=''; const BAG_SLOTS=150; // inventory stacks (equipped gear doesn't count)
 const QUICK_CD=1.5, QUICK_LONGPRESS=500; // quick-use healing slot: cooldown (s), long-press to pick (ms)
 // ---- Zone gates: level + equipped gear tier (item req). rect = barrier tiles [x0,y0,x1,y1]; side = where the locked zone lies ----
 const GATE_REQS=[
@@ -10124,6 +10124,27 @@ function t2Roll(g){const set=t2Set(g);if(!set)return [];const c=t2Chance(g),f=wi
  if(seaSt().tester)h+='<div class="row"><button class="pb" data-a="t2f" data-v="'+g+'">Tester: force '+(g==='zeus'?'Zeus set':'T2')+' drop</button></div>';box.insertAdjacentHTML('beforeend',h);}catch(e){console.warn('t2p',e);}};}
 dlg.addEventListener('click',e=>{const b=e.target&&e.target.closest?e.target.closest('[data-a="t2f"]'):null;if(!b)return;e.stopPropagation();e.preventDefault();if(!seaSt().tester)return;const g=b.getAttribute('data-v');for(const x of t2Set(g))give31(x,1);toast('Tester: '+t2Set(g).length+' pieces added');save();bossDetail32(INST&&0||('b31_'+g));},true);
 window.__t2={T2_351,ZL_351,T2R,t2Chance,t2Roll,t2Worn,t2Full,zlCount,PW:()=>PW351,SK:()=>SK351,useSkill351};
+
+// ---- v35.2: 150-slot bag, smooth-scrolling grid, slot count ----
+(function(){const st=document.createElement('style');st.textContent=`
+#dlg .bgrid{grid-template-columns:repeat(auto-fill,42px)!important;gap:4px!important;justify-content:start!important;max-height:min(46vh,190px);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;padding:2px 4px 2px 2px;scrollbar-width:thin;scroll-behavior:auto}
+#dlg .bgrid .bslot{width:42px!important;height:42px!important}
+#dlg .bgrid::-webkit-scrollbar{width:6px}#dlg .bgrid::-webkit-scrollbar-thumb{background:#8a6a34;border-radius:3px}
+.bcnt352{display:inline-block;margin-left:6px;padding:0 6px;border-radius:8px;background:#3a2410;color:#ffd75a;font-size:11px}.bcnt352.full{background:#7a1c14;color:#fff}.bcnt352.near{background:#6a4a10}`;document.head.appendChild(st);})();
+function bagCnt352(){const u=bagUsed();return '<span class="bcnt352'+(u>=BAG_SLOTS?' full':u>=BAG_SLOTS-10?' near':'')+'">'+u+'/'+BAG_SLOTS+'</span>';}
+// keep the grid scroll position across re-renders (tapping a slot re-opens the panel)
+var BAGSC352=0,BAGRS352=false;
+{const _ob=openBag;openBag=function(){const g=dlg.querySelector('.bgrid');if(BAGRS352){BAGSC352=0;BAGRS352=false;}else if(g&&dlg.style.display==='grid')BAGSC352=g.scrollTop;const r=_ob.apply(this,arguments);try{const g2=dlg.querySelector('.bgrid');if(g2){g2.scrollTop=BAGSC352;g2.addEventListener('scroll',()=>{BAGSC352=g2.scrollTop;},{passive:true});}
+ const h=[...dlg.querySelectorAll('p')].find(p=>/^Bag/.test(p.textContent));if(h){const s=h.querySelector('small');if(s)s.outerHTML=bagCnt352();}}catch(e){}return r;};}
+// tab switch: start at the top
+document.addEventListener('click',e=>{if(e.target&&e.target.closest&&e.target.closest('#dlg .bcat29,#dlg [data-a^="bc29"],#dlg [data-a="bcat"]'))BAGRS352=true;},true);
+// full-bag toast shows the count
+{const _bf=bagFullMsg;bagFullMsg=function(){const t=performance.now();if(t-bagFullT>1500){bagFullT=t;toast('Bag full ('+bagUsed()+'/'+BAG_SLOTS+')');float(P.x,P.y-50,'Bag full','#ff8a7a');}};}
+// Tester Mode: grant the full T2 set (10) + Zeus Legend set (8) once, no duplicates; bag first, bank only if the bag is full
+function t2Grant352(){const v=V();if(v.t2grant352)return 0;const ids=[...Object.values(T2_351).flatMap(g=>g.items.map(x=>x[0])),...ZL_351.items.map(x=>x[0])];let n=0,bank=0;
+ for(const k of ids){if(owned32(k)>0)continue;if(hasRoomFor(k)){P.inv[k]=(P.inv[k]||0)+1;}else{P.bank=P.bank||{};P.bank[k]=(P.bank[k]||0)+1;bank++;}n++;}
+ v.t2grant352=1;save();if(n)toast('Tester: T2 + Zeus Legend sets added ('+n+' pieces'+(bank?', '+bank+' to the bank (bag full)':'')+')');return n;}
+{const _t=testerMode19;testerMode19=function(){const r=_t.apply(this,arguments);try{t2Grant352();}catch(e){console.warn('t2g352',e);}return r;};}
 
 //@@HIP6END@@
 // ---------- v22.5: music batch 3 wiring (interiors, hippodrome, chariot mount loops, town/hub market ambience) ----------

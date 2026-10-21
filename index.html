@@ -238,9 +238,9 @@ input,textarea{-webkit-user-select:text;user-select:text}
 #dlg .pX{position:absolute;top:6px;right:6px;width:44px;height:44px;min-width:44px;padding:0;margin:0;font-size:22px;line-height:40px;text-align:center;background:#5a2a12;color:#ffe9b0;border:2px solid #1a1008;box-shadow:inset 0 0 0 1px #c8804a;border-radius:6px;z-index:5}
 #dlg>h2:first-of-type{padding-right:50px}
 </style>
-<script>/* v22.6 update check */(function(){var V='35.4.0';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
+<script>/* v22.6 update check */(function(){var V='35.5.0';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
 function mk(){var d=document.createElement('div');d.id='pwGate';d.style.cssText='position:fixed;inset:0;z-index:2147483647;background:#1a1008;display:flex;align-items:center;justify-content:center;font:16px sans-serif;color:#ffe27a';
-d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v35.4 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
+d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v35.5 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
 document.body.appendChild(d);['pointerdown','touchstart','keydown','mousedown'].forEach(function(t){d.addEventListener(t,function(e){e.stopPropagation();},true);});
 document.getElementById('pwF').addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('pwI').value;crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){var x=Array.from(new Uint8Array(b)).map(function(n){return n.toString(16).padStart(2,'0')}).join('');
 if(x===H){try{localStorage.setItem(K,H);}catch(e){}d.remove();}else{document.getElementById('pwE').textContent='Wrong password';document.getElementById('pwI').value='';}});});}
@@ -10268,6 +10268,49 @@ function giftOpenAll354(){if(G23.t)return;const pend=gift23pending();if(!pend.le
 {const _gp=gift23panel;gift23panel=function(L){const r=_gp.apply(this,arguments);try{const n=gift23pending().length;if(n>1){const b=document.getElementById('g23b');if(b)b.insertAdjacentHTML('afterend','<button class="pb" id="g23all" onclick="giftOpenAll354()">Open All ('+n+')</button>');}}catch(e){}return r;};}
 window.giftOpenAll354=giftOpenAll354;
 (function(){const st=document.createElement('style');st.textContent='.ga354{text-align:center}.ga-row{display:flex;flex-wrap:wrap;gap:4px 10px;justify-content:center;margin:4px 0}.ga-it{display:inline-flex;align-items:center;gap:4px;font-size:12px}.ga-it i{width:28px;height:28px;display:inline-block;background-size:100% 100%;image-rendering:pixelated}.ga-it.g{color:#ffd75a;font-weight:bold}.ga-warn{color:#c0281c;font-weight:bold}';document.head.appendChild(st);})();
+
+var V5X354_SRC={};
+for(const k in V5X354_SRC){const o=V5X354_SRC[k],im=new Image();im.src=o.u;V5R[k]={im,f:o.f,fy:o.fy,cell:o.cell,an:o.an,anim:o.anim};}
+// ---- v35.5: Tester Mode wears the full Zeus set; skill HUD refresh; set progress lines; Open All Close fix ----
+const SLN355={weapon:'Weapon',head:'Head',chest:'Chest',legs:'Legs',boots:'Boots',cape:'Cape',ring:'Ring',neck:'Neck'};
+function zMiss355(){const zs=ZL_351.items.map(x=>ITEMS[x[0]]&&ITEMS[x[0]].slot);return EQ_SLOTS.filter(s=>zs.includes(s)).filter(s=>{const it=ITEMS[P.eq[s]];return !(it&&it.zl);});}
+function tMiss355(){const ts=new Set(Object.values(T2_351).flatMap(g=>g.items.map(x=>ITEMS[x[0]]&&ITEMS[x[0]].slot)));return EQ_SLOTS.filter(s=>ts.has(s)).filter(s=>{const it=ITEMS[P.eq[s]];return !(it&&it.t2);});}
+function setLine355(){const zn=zlCount(),tn=t2Worn().slots,zm=zMiss355(),tm=tMiss355();
+ const z='<b style="color:#ff3b30">Zeus '+zn+'/8</b>'+(zn>=8?' <b class="up">– complete</b>':' – missing: '+zm.map(s=>SLN355[s]).join(', '));
+ const t='<b style="color:#3ab4ff">T2 '+tn+'/8</b>'+(tn>=8?' <b class="up">– complete</b>':' – missing: '+tm.map(s=>SLN355[s]).join(', '));
+ const on=t2Full();return '<div class="set355"><small>'+z+'<br>'+t+'<br>'+(on?'<b class="up">God skills unlocked</b>':'<span class="dim">God skills locked: wear all 8 Zeus or all 8 T2 pieces</span>')+'</small></div>';}
+function skRefresh355(){try{sk351Hud();}catch(e){}}
+// 1. tester: wear all 8 Zeus pieces (T2 stays in the bag)
+function testerZeus355(){const ids=ZL_351.items.map(x=>x[0]);
+ for(const k of ids){const it=ITEMS[k];if(!it)continue;if(bagCount(k)<=0){if(P.bank&&P.bank[k]>0){P.bank[k]--;if(P.bank[k]<=0)delete P.bank[k];}P.inv[k]=1;}P.eq[it.slot]=k;}
+ const w=ITEMS[P.eq.weapon];try{if(w&&w.wtype!=='Bow'){RG.lastMelee=P.eq.weapon;rgSaveSwap();}}catch(e){}
+ try{portraitKey='';rgBtn&&rgBtn();}catch(e){}save();skRefresh355();return zlCount();}
+{const _t=testerMode19;testerMode19=function(){const r=_t.apply(this,arguments);try{testerZeus355();}catch(e){console.warn('tz355',e);}return r;};}
+// 2. refresh hooks
+{const _a=equipItem;equipItem=function(){const r=_a.apply(this,arguments);skRefresh355();return r;};}
+{const _b=unequipSlot;unequipSlot=function(){const r=_b.apply(this,arguments);skRefresh355();return r;};}
+{const _c=closePanel;closePanel=function(){const r=_c.apply(this,arguments);skRefresh355();return r;};}
+{const _d=applyImport;applyImport=function(){const r=_d.apply(this,arguments);skRefresh355();setTimeout(skRefresh355,100);return r;};}
+window.addEventListener('load',()=>setTimeout(skRefresh355,50));setTimeout(skRefresh355,300);
+// 3. set progress on gear card + character panel
+{const _gs=gSet354;gSet354=function(it){let h=_gs.apply(this,arguments);if(it.zl||it.t2)h+='<div class="gc-sec">'+setLine355()+'</div>';return h;};}
+{const _oc=openChar;openChar=function(){const r=_oc.apply(this,arguments);try{const d=document.getElementById('dlg');const anchor=d&&(d.querySelector('.pdoll')||d.querySelector('.eqgrid'));if(anchor&&!d.querySelector('.set355')){const x=document.createElement('div');x.innerHTML=setLine355();anchor.parentNode.insertBefore(x.firstChild,anchor.nextSibling);}}catch(e){console.warn('oc355',e);}return r;};}
+(function(){const st=document.createElement('style');st.textContent='.set355{margin:4px 0;padding:4px 6px;border:1px solid #6a4a2a;border-radius:6px;text-align:left;line-height:1.35}.set355 .dim{opacity:.75}'+
+// 4. Open All summary close button
+'#dlg .ga354{flex:1 1 auto;min-height:0;overflow:auto}#dlg .ga354~.row{flex-shrink:0}#dlg .ga354~.row .pb{min-height:46px;height:auto;font-size:15px;padding:10px 18px;line-height:1.2}';document.head.appendChild(st);})();
+window.__t355={testerZeus355,setLine355,zMiss355};
+// hide the skill buttons whenever a panel or the gear card is up (they drew over the gift summary)
+{const _h=sk351Hud;sk351Hud=function(){const r=_h.apply(this,arguments);try{const up=(typeof dlg!=='undefined'&&dlg&&getComputedStyle(dlg).display!=='none')||((document.getElementById('gc354')||{}).style||{}).display==='flex';if(up)document.querySelectorAll('.sk351').forEach(b=>b.style.display='none');}catch(e){}return r;};}
+
+// ---- v35.5 b: load() runs before later patches define their items (T2, Zeus, fire arrows...), so it pruned them
+// from the bag/bank and unequipped them on every reload. Restore them from the raw save once all items exist.
+function restore355(){let s=null;try{s=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');}catch(e){}if(!s||typeof s!=='object')return 0;let n=0;
+ if(s.inv&&typeof s.inv==='object')for(const k in s.inv)if(ITEMS[k]&&!(P.inv[k]>0)&&s.inv[k]>0){P.inv[k]=s.inv[k];n++;}
+ if(s.bank&&typeof s.bank==='object'){P.bank=P.bank||{};for(const k in s.bank)if(ITEMS[k]&&!(P.bank[k]>0)&&s.bank[k]>0){P.bank[k]=s.bank[k];n++;}}
+ const e=eqMigrate(s.eq);let q=0;for(const sl of EQ_SLOTS){const k=e[sl];if(!k||P.eq[sl]===k)continue;const it=ITEMS[k];if(it&&it.slot===sl&&P.inv[k]>0&&(sl==='ammo'||canEquip(k))){P.eq[sl]=k;q++;}}
+ try{fixEquip();}catch(e){}if(s.quick&&ITEMS[s.quick]&&ITEMS[s.quick].heal&&!P.quick)P.quick=s.quick;
+ window.__rs355={inv:n,eq:q};if(n||q){try{portraitKey='';rgBtn&&rgBtn();}catch(e){}try{skRefresh355();}catch(e){}}return n+q;}
+try{if(typeof hadSave!=='undefined'?hadSave:true)restore355();}catch(e){console.warn('rs355',e);}
 
 //@@HIP6END@@
 // ---------- v22.5: music batch 3 wiring (interiors, hippodrome, chariot mount loops, town/hub market ambience) ----------

@@ -238,9 +238,9 @@ input,textarea{-webkit-user-select:text;user-select:text}
 #dlg .pX{position:absolute;top:6px;right:6px;width:44px;height:44px;min-width:44px;padding:0;margin:0;font-size:22px;line-height:40px;text-align:center;background:#5a2a12;color:#ffe9b0;border:2px solid #1a1008;box-shadow:inset 0 0 0 1px #c8804a;border-radius:6px;z-index:5}
 #dlg>h2:first-of-type{padding-right:50px}
 </style>
-<script>/* v22.6 update check */(function(){var V='35.9.1';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
+<script>/* v22.6 update check */(function(){var V='35.9.2';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
 function mk(){var d=document.createElement('div');d.id='pwGate';d.style.cssText='position:fixed;inset:0;z-index:2147483647;background:#1a1008;display:flex;align-items:center;justify-content:center;font:16px sans-serif;color:#ffe27a';
-d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v35.9.1 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
+d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v35.9.2 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
 document.body.appendChild(d);['pointerdown','touchstart','keydown','mousedown'].forEach(function(t){d.addEventListener(t,function(e){e.stopPropagation();},true);});
 document.getElementById('pwF').addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('pwI').value;crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){var x=Array.from(new Uint8Array(b)).map(function(n){return n.toString(16).padStart(2,'0')}).join('');
 if(x===H){try{localStorage.setItem(K,H);}catch(e){}d.remove();}else{document.getElementById('pwE').textContent='Wrong password';document.getElementById('pwI').value='';}});});}
@@ -10582,6 +10582,44 @@ window.__b359={BS359,bagSort359,bagFind359};
 var LT359={apollo:{hp:0.95,atk:0.95},poseidon:{hp:0.9,atk:0.95},hades:{hp:0.65,atk:0.75},ares:{hp:0.85,atk:0.85},athena:{hp:0.5,atk:0.55},zeus:{hp:0.45,atk:0.55}};
 {const _iw=instWave;instWave=function(){const r=_iw.apply(this,arguments);try{if(INST.meta&&INST.meta.leg){for(const m of mobs)if(m.inst&&m.alive&&m.leg35&&!m.lt359&&m.b31&&!m.add31){m.lt359=1;const g=String(m.type||'').replace('b31_','');const t=LT359[g];if(t){m.maxHp=Math.round(m.maxHp*t.hp);m.hp=m.maxHp;m.atk=Math.round(m.atk*t.atk);}}}}catch(e){}return r;};}
 window.LT359=LT359;
+
+// ---- v35.9.2 a: bows hit like swords ----
+// Root cause (v35.9.1): arrows used a separate OSRS-style formula driven by the Ranged SKILL (capped at 50, often 1-20 on real saves)
+// against boss "ranged defence" (lv+9)*(rdef+64). Against Lv70-100 gods that meant 8-35% hit chance and small hits, while melee
+// uses hero level + gear attack. Result: bows looked like they did nothing (mostly "miss", tiny numbers).
+// Now an arrow rolls exactly like a melee swing: same hit chance (hero level vs boss level + accuracy), same dmgRoll vs boss defence,
+// same boss damage reductions. The bow supplies a "bow attack" (batk) in place of a sword's atk, tuned so the same-tier bow
+// deals ~97% of the same-tier melee weapon's DPS (bows fire a little slower: speed 1.25 vs 1.1-1.2).
+// Ranged level still matters a little: x(0.9 + 0.1*Ranged/50).
+var BOW3592={acc:3,lvl:true};
+const BATK3592={zeus_l_bow:275,olympian_t2_bow:347,apollo_t2_bow:330};
+function bowAtk3592(w){if(!w)return 0;if(BATK3592[w.key3592]!=null)return BATK3592[w.key3592];if(w.batk!=null)return w.batk;return Math.round((w.racc||0)*0.75+(w.rstr||0)*0.5);}
+for(const k in ITEMS){const it=ITEMS[k];if(it&&it.bow){it.key3592=k;it.batk=bowAtk3592(it);}}
+function bowHit3592(m){return hitChance(m);}function bowHitOld3592(m){return Math.max(HIT_MIN,Math.min(HIT_MAX,HIT_BASE+(pAcc()+BOW3592.acc)*HIT_PER_ACC-Math.max(0,m.lv-P.lvl)*HIT_PER_LV));}
+rHitChance=function(m){return bowHit3592(m);};window.rHitChance=rHitChance;
+function bowPAtk3592(){const w=wIt();return pAtk()-((w&&w.atk)||0)+bowAtk3592(w);}
+// An arrow that lands is resolved by the SAME hitMob pipeline as a sword swing (hit roll, dmgRoll vs defence, boss damage
+// reductions, set/power/blessing bonuses that wrap hitMob), using a virtual melee weapon whose attack is the bow's batk.
+ITEMS.__bow3592={name:'Bow shot',slot:'weapon',atk:0,acc:BOW3592.acc,speed:1.25,wtype:'',noBag:true};
+rHitChance=function(m){return 1;};window.rHitChance=rHitChance;   // the real roll happens inside hitMob
+{const _ri=rgImpact;rgImpact=function(s,hit){const m=s&&s.m;if(!m||!m.alive)return _ri.apply(this,arguments);
+  const w=wIt();if(!isBow(w))return _ri.apply(this,arguments);
+  const rk=0.9+0.1*Math.min(50,rLvl())/50;const K=(typeof ATK_DMG_K!=='undefined'?ATK_DMG_K:1);
+  const vw=ITEMS.__bow3592;vw.atk=bowAtk3592(w);vw.speed=w.speed||1.25;
+  const sv=P.eq.weapon,sw=P.swing,swT=P.swingT,face=P.face,h0=m.hp;P.eq.weapon='__bow3592';BOW3592.inShot=1;
+  try{hitMob(m,(s.mult||1)*rk*K);
+    // arrows clip nearby foes like a sword arc does (melee arcs hit several targets): up to 2 others within 60px take a splash hit
+    let n=0;for(const o of mobs){if(n>=2)break;if(o===m||!o.alive||(MOBS[o.type]||{}).passive&&!o.hostile)continue;try{if(typeof attackable==='function'&&!attackable(o))continue;}catch(e){}if(Math.hypot(o.x-m.x,o.y-m.y)<60+o.r){n++;hitMob(o,(s.mult||1)*rk*K*0.8,true);}}
+  }finally{P.eq.weapon=sv;BOW3592.inShot=0;P.swing=sw;P.swingT=swT;P.face=face;}
+  const dm=Math.round(h0-m.hp);BOW3592.last={dm,m:m.type,t:now};
+  if(dm>0){m.hitT=0.33;try{s2('hit_bow',{volume:0.8});if(s.art==='fire')s2('firearrow_hit',{volume:0.7});}catch(e){}try{skXp('ranged',Math.max(1,Math.round(dm*0.2)));}catch(e){}
+    if(s.fx==='bleed')m.dot={dps:Math.max(1,dm*0.08),t:3,c:'#c02020'};if(s.fx==='burn')m.dot={dps:Math.max(1,dm*0.12),t:3,c:'#ff8a2a'};
+    try{if(s.art==='fire'&&V5R.fire_arrow_fx){fx5('fire_arrow_fx','fire_arrow_impact',m.x,m.y-m.r*0.6,6,60);m._burn5=now+3;}}catch(e){}
+    if(Math.random()<0.25){const ang=Math.atan2(s.vy||0,s.vx||1);RG.stuck.push({x:m.x+rand(-14,14),y:m.y+rand(4,14),art:s.art,k:s.k,t:0,a:ang});if(RG.stuck.length>40)RG.stuck.shift();}}
+  if(!target&&m.alive)target=m;};window.rgImpact=rgImpact;}
+// Tester Mode: Ranged to the cap so every bow is usable straight away
+{const _tm=testerMode19;testerMode19=function(){const r=_tm.apply(this,arguments);try{P.sk=P.sk||{};P.sk.ranged=Math.max(P.sk.ranged||0,SKILL_XP[SKILL_MAX]);}catch(e){}return r;};window.testerMode19=testerMode19;}
+window.__b3592={BOW3592,BATK3592,bowAtk3592,bowHit3592,bowPAtk3592};
 
 //@@HIP6END@@
 // ---------- v22.5: music batch 3 wiring (interiors, hippodrome, chariot mount loops, town/hub market ambience) ----------

@@ -238,9 +238,9 @@ input,textarea{-webkit-user-select:text;user-select:text}
 #dlg .pX{position:absolute;top:6px;right:6px;width:44px;height:44px;min-width:44px;padding:0;margin:0;font-size:22px;line-height:40px;text-align:center;background:#5a2a12;color:#ffe9b0;border:2px solid #1a1008;box-shadow:inset 0 0 0 1px #c8804a;border-radius:6px;z-index:5}
 #dlg>h2:first-of-type{padding-right:50px}
 </style>
-<script>/* v22.6 update check */(function(){var V='35.8.0';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
+<script>/* v22.6 update check */(function(){var V='35.9.0';function chk(){try{fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.version)return;var a=String(j.version).split('.').map(Number),b=V.split('.').map(Number),n=0;for(var i=0;i<3;i++){if((a[i]||0)!==(b[i]||0)){n=(a[i]||0)>(b[i]||0)?1:-1;break;}}if(n>0){var d=document.createElement('div');d.id='updReady';d.textContent='Update ready';d.style.cssText='position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:99999;background:#2a1914;color:#ffe27a;border:2px solid #c9a24a;padding:6px 14px;font:14px sans-serif;border-radius:6px';document.body.appendChild(d);setTimeout(function(){location.replace(location.pathname+'?v='+j.version)},1500);}}).catch(function(){});}catch(e){}}window.__BUILD=V;if(document.readyState==='loading')addEventListener('DOMContentLoaded',chk);else chk();addEventListener('pageshow',function(e){if(e.persisted)chk();});document.addEventListener('visibilitychange',function(){if(!document.hidden)chk();});})();</script><script>/* TEST BUILD password gate */(function(){var H='11b7ab4d4f23532a244120c5c0875a1919fd978cc51cc6edc54fb3e7d1bd4185',K='troy_test_unlock';try{if(localStorage.getItem(K)===H)return;}catch(e){}
 function mk(){var d=document.createElement('div');d.id='pwGate';d.style.cssText='position:fixed;inset:0;z-index:2147483647;background:#1a1008;display:flex;align-items:center;justify-content:center;font:16px sans-serif;color:#ffe27a';
-d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v35.8 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
+d.innerHTML='<form id="pwF" style="text-align:center"><div style="margin-bottom:10px">Troy v35.9 test build</div><input id="pwI" type="password" autocomplete="off" placeholder="Password" style="font-size:16px;padding:8px;border:2px solid #c9a24a;background:#2a1914;color:#ffe27a;border-radius:6px"> <button id="pwB" style="font-size:16px;padding:8px 14px;background:#c9a24a;border:0;border-radius:6px">Enter</button><div id="pwE" style="margin-top:8px;color:#ff7a6a;min-height:20px"></div></form>';
 document.body.appendChild(d);['pointerdown','touchstart','keydown','mousedown'].forEach(function(t){d.addEventListener(t,function(e){e.stopPropagation();},true);});
 document.getElementById('pwF').addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('pwI').value;crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){var x=Array.from(new Uint8Array(b)).map(function(n){return n.toString(16).padStart(2,'0')}).join('');
 if(x===H){try{localStorage.setItem(K,H);}catch(e){}d.remove();}else{document.getElementById('pwE').textContent='Wrong password';document.getElementById('pwI').value='';}});});}
@@ -3226,12 +3226,12 @@ function dropStack(k){const n=bagCount(k);if(!n)return;const q=curQ();if(ITEMS[k
   P.inv[k]-=n;if(P.inv[k]<=0)delete P.inv[k];if(P.quick===k&&!P.inv[k])lastQs='';log('Dropped '+ITEMS[k].name+(n>1?' x'+n:''));bagSel=null;save();}
 function slotHTML(k,n,extra){return '<button class="bslot'+(extra||'')+'" data-a="slot" data-v="'+(k||'')+'">'+(k?'<i style="background-image:url('+(ITEM_ICON[k]||'')+')"></i>'+(n>1?'<b class="ol">'+n+'</b>':''):'')+'</button>';}
 function openBag(){const keep=dlg.style.display==='grid'?dlg.scrollTop:0;
-  const keys=bagKeys();const ord=k=>{const it=ITEMS[k];return (it.slot==='weapon'?0:it.slot?1+EQ_SLOTS.indexOf(it.slot)*0.1:it.heal?2:it.kit?2.5:3)*1000+(it.req||0)*10;};keys.sort((x,y)=>ord(x)-ord(y));
+  const keys=bagKeys();const ord=k=>{const it=ITEMS[k];return (it.slot==='weapon'?0:it.slot?1+EQ_SLOTS.indexOf(it.slot)*0.1:it.heal?2:it.kit?2.5:3)*1000+(it.req||0)*10;};keys.sort((x,y)=>ord(x)-ord(y));try{bagSort359(keys);}catch(e){}
   if(bagSel&&!keys.includes(bagSel)&&!isWorn(bagSel))bagSel=null;
   const eqS=(slot,lbl)=>{const k=P.eq[slot];return '<div class="eqs"><small>'+lbl+'</small>'+(k?slotHTML(k,1,' worn'+(bagSel===k&&!bagCount(k)?' sel':'')):'<button class="bslot emp" data-a="slot" data-v=""><i class="ghost" style="background-image:url('+(SLOT_GHOST[slot]||'')+')"></i></button>')+'</div>';};
   let L='<p style="margin:0 0 3px;color:#ffd75a">Equipped <small>(not in the bag)</small></p><div class="eqgrid">'+EQ_SLOTS.map(sl=>eqS(sl,SLOT_NAME[sl])).join('')+'</div>'+outfitHTML()+'<div class="purse ol">'+coinHTML(P.coins)+'</div>';
   L+='<p style="margin:4px 0 0"><small>Str '+pAtk()+' · Def '+pDef()+' · Magic '+pMagic()+' · Acc '+Math.round(HIT_BASE*100+pAcc())+'%<br>HP '+Math.ceil(P.hp)+'/'+maxHp()+' · Move '+Math.round(mSpeed()/1.6)+'%</small></p>';
-  let g=bagCatBar29()+'<div class="bgrid">';const fk29=keys.filter(bagCatOk29);for(let i=0;i<BAG_SLOTS;i++){const k=fk29[i];g+=k?slotHTML(k,bagCount(k),(bagSel===k?' sel':'')+(ITEMS[k].slot&&!canEquip(k)?' req':'')):'<div class="bslot emp"></div>';}g+='</div>';
+  let g=bagCatBar29()+'<div class="bgrid">';const fk29=keys.filter(bagCatOk29).filter(k=>{try{return bagFind359(k);}catch(e){return true;}});for(let i=0;i<BAG_SLOTS;i++){const k=fk29[i];g+=k?slotHTML(k,bagCount(k),(bagSel===k?' sel':'')+(ITEMS[k].slot&&!canEquip(k)?' req':'')):'<div class="bslot emp"></div>';}g+='</div>';
   for(let i=BAG_SLOTS;i<keys.length;i++)g+=slotHTML(keys[i],bagCount(keys[i]),' over');
   let D='';const k=bagSel;
   if(k){const it=ITEMS[k],worn=isWorn(k),n=bagCount(k);let acts='';
@@ -3944,7 +3944,7 @@ function entOffset(e,face,swing,flash,pre){let ox=0,oy=0;const dx=Math.cos(face)
   if(flash>0){ox+=(Math.random()-0.5)*4;oy+=(Math.random()-0.5)*2;}return [ox,oy];}
 const WORLD_LABELS=[['Chandlery','#9fe27a',126*T,3*T-12],['Inn','#ffb8d8',131*T,3*T-12],['Bank','#ffd75a',138*T,3*T-12],['Garrison Hall','#ffb84a',145*T,2*T-12],["Wardens' Camp",'#bfe8a0',141*T,24*T-12],['Webwood','#e8e8f0',162*T,21*T],["Robbers' Hollow",'#ffb89a',125*T,37*T],['Army of Kaja','#9fc8ff',127*T,65*T],['Ash-Tribe Camp','#ffb89a',162*T,65*T],['Bank','#ffd75a',44.5*T,3*T-12],['The Watchfire','#ffb84a',48.5*T,7*T-30],['Hollow of Echoes','#c8b8ff',62.5*T,42*T+4],['Bandit Cove','#ff9a7a',73.5*T,34.6*T],['Crab Flats','#ffd0b0',77*T,16.6*T],['Tide Pools','#bfe8ff',76.5*T,23.6*T],['The Dunes','#ffe9b0',57.5*T,27.6*T],['Fisherman\'s Landing','#bfe8ff',88*T,19.6*T],['Scaean Gate','#ffd75a',24*T,13*T+18],['General Store','#9fe27a',17.5*T,3*T-12],['Inn','#ffb8d8',30.5*T,3*T-12],['Beach Shack','#9fe2ff',65.5*T,17*T-12]];
 function draw(){
-  if(typeof camUpdate==='function')camUpdate();else{cam.x=Math.round(Math.max(0,Math.min(MW*T-VW,P.x-VW/2))); cam.y=Math.round(Math.max(0,Math.min(MH*T-VH,P.y-VH*0.55)));}
+  if(typeof camUpdate==='function')camUpdate();else{cam.x=Math.round(Math.max(0,Math.min(MW*T-VW,P.x-VW/2))); cam.y=Math.round(Math.max(0,Math.min(MH*T-VH,P.y-VH*camF359())));}
   cx.setTransform(DPR,0,0,DPR,0,0);cx.imageSmoothingEnabled=false;cx.fillStyle='#000';cx.fillRect(0,0,W,H);
   cx.setTransform(DPR*ZOOM,0,0,DPR*ZOOM,0,0);cx.imageSmoothingEnabled=false;
   const shx=shakeT>0?Math.round((Math.random()-0.5)*2*shakeMag*(shakeT/0.22)):0,shy=shakeT>0?Math.round((Math.random()-0.5)*2*shakeMag*(shakeT/0.22)):0;
@@ -4031,7 +4031,7 @@ function draw(){
     else if(c.k==='gull'||c.k==='bird'){const im=(c.k==='gull'?GULL:BIRD)[Math.floor(c.t*5)%2];if(c.vx<0){cx.save();cx.translate(Math.round(c.x),0);cx.scale(-1,1);cx.drawImage(im,-im.width/2,Math.round(c.y));cx.restore();}else cx.drawImage(im,Math.round(c.x-im.width/2),Math.round(c.y));}}
   for(const m of mobs)if(m.alive&&m.charge&&m.charge.ph==='paw')labels.push([nameTag('!!','#ff3a2a'),m.x,m.y-m.r-46-Math.round(Math.abs(Math.sin(now*10))*4)]);
   for(const wl of WORLD_LABELS)if(wl[2]>cam.x-80&&wl[2]<cam.x+VW+80&&wl[3]>cam.y-20&&wl[3]<cam.y+VH+20)labels.push([nameTag(wl[0],wl[1]),wl[2],wl[3]]);
-  for(const l of labels){if(l[0]==='hp')hpBar(l[1],l[2],l[3]);else cx.drawImage(l[0],Math.round(l[1]-l[0].width/2),Math.round(l[2]-l[0].height));}
+  try{declutter359(labels);}catch(e){}for(const l of labels){if(l[0]==='hp')hpBar(l[1],l[2],l[3]);else cx.drawImage(l[0],Math.round(l[1]-l[0].width/2),Math.round(l[2]-l[0].height));}
   const pvx0=cam.x-60,pvy0=cam.y-60,pvx1=cam.x+W/ZOOM+60,pvy1=cam.y+H/ZOOM+60;
   for(const q of parts){if(q.x<pvx0||q.x>pvx1||q.y<pvy0||q.y>pvy1)continue;let al=Math.min(1,q.life/q.max*1.5)*(q.a||1);if(q.blink)al*=0.5+0.5*Math.sin(now*6+q.ph);cx.globalAlpha=al;cx.fillStyle=q.c;const sz=q.s+(q.grow?(1-q.life/q.max)*q.grow:0);
     if(q.streak){const v=Math.hypot(q.vx,q.vy)||1,nx=q.vx/v,ny=q.vy/v;for(let k=0;k<3;k++){cx.globalAlpha=al*(1-k*0.3);cx.fillRect(Math.round(q.x-nx*k*3),Math.round(q.y-ny*k*3),2,2);}continue;}
@@ -5462,7 +5462,7 @@ const CAMS={x:null,y:null,lx:0,ly:0,px:0,py:0,t:0};
 function camUpdate(){const tn=performance.now(),dt=Math.min(0.05,Math.max(0.001,(tn-(CAMS.t||tn))/1000||0.016));CAMS.t=tn;
   const vx=(P.x-CAMS.px)/dt,vy=(P.y-CAMS.py)/dt;CAMS.px=P.x;CAMS.py=P.y;const jump=Math.abs(vx*dt)>200||Math.abs(vy*dt)>200;
   const tlx=Math.max(-46,Math.min(46,(jump?0:vx)*0.28)),tly=Math.max(-26,Math.min(26,(jump?0:vy)*0.2));const k=1-Math.exp(-dt*3.2);CAMS.lx+=(tlx-CAMS.lx)*k;CAMS.ly+=(tly-CAMS.ly)*k;
-  const tx=P.x-VW/2+CAMS.lx,ty=P.y-VH*0.55+CAMS.ly;if(CAMS.x===null||jump||fadeT>0.3){CAMS.x=tx;CAMS.y=ty;}else{const e=1-Math.exp(-dt*9);CAMS.x+=(tx-CAMS.x)*e;CAMS.y+=(ty-CAMS.y)*e;}
+  const tx=P.x-VW/2+CAMS.lx,ty=P.y-VH*camF359()+CAMS.ly;if(CAMS.x===null||jump||fadeT>0.3){CAMS.x=tx;CAMS.y=ty;}else{const e=1-Math.exp(-dt*9);CAMS.x+=(tx-CAMS.x)*e;CAMS.y+=(ty-CAMS.y)*e;}
   cam.x=Math.round(Math.max(0,Math.min(MW*T-VW,CAMS.x)));cam.y=Math.round(Math.max(0,Math.min(MH*T-VH,CAMS.y)));}
 function sparks(x,y,n,col,spd){if(typeof FXQ!=='undefined'&&FXQ===0)n=Math.ceil(n/3);for(let i=0;i<n&&parts.length<PART_CAP-4;i++){const a=Math.random()*6.283,s=(spd||150)*(0.4+Math.random()*0.8);parts.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s*0.7-40,g:380,life:0.22+Math.random()*0.18,max:0.4,c:i%3?col:'#fff6d0',s:i%4?2:3});}}
 {const _hm5=hitMob;hitMob=function(m,mult,splash){const h0=m.hp;const r=_hm5(m,mult,splash);try{const dmg=h0-m.hp;if(dmg>0){const big=(mult||1)>1.4||dmg>m.maxHp*0.2;sparks(m.x,m.y-m.r*0.8,big?14:7,big?'#ffd75a':'#ffe8b0',big?230:150);if(big&&FXQ!==0)hitStop=Math.max(hitStop,0.035);}}catch(e){}return r;};}
@@ -6823,7 +6823,7 @@ function hipHud(){const me=HIP.cars[0];cx.setTransform(DPR,0,0,DPR,0,0);const sw
 function hipGateBuild(){try{const tw=(REP_TOWNS||[]).find(t=>t.id==='ilios');if(!tw)return;const FREE=new Set([G,SAND,STONE,PATH]);let got=null;
   for(let r=8;r<=40&&!got;r++)for(let k=0;k<36&&!got;k++){const a=k/36*Math.PI*2,x=Math.round(tw.x+Math.cos(a)*r),y=Math.round(tw.y+Math.sin(a)*r*0.8);let ok=true;
     for(let j=-3;j<=1&&ok;j++)for(let i=-3;i<=3&&ok;i++)if(!FREE.has(getT(x+i,y+j)))ok=false;if(ok&&(HUBS||[]).some(h=>Math.abs(h.x+4-x)<10&&Math.abs(h.y+2-y)<8))ok=false;if(ok&&NPCS.some(n=>Math.hypot(n.x/T-x,n.y/T-y)<4))ok=false;if(ok)got=[x,y];}
-  if(!got)return;const [x,y]=got;HIP.gate={x:(x+0.5)*T,y:(y+0.5)*T};for(const i of [-3,-2,2,3]){under[(y-1)*MW+x+i]=getT(x+i,y-1);setT(x+i,y-1,PROP);}
+  if(!got)return;const [x,y]=hipSnap359(got);HIP.gate={x:(x+0.5)*T,y:(y+0.5)*T};for(const i of [-3,-2,2,3]){under[(y-1)*MW+x+i]=getT(x+i,y-1);setT(x+i,y-1,PROP);}
   NPCS.push({id:'hippo_gate',name:'Great Hippodrome',x:(x+0.5)*T,y:(y+0.6)*T,hippo:1});
   const c=mk(7*16,4*16),g=c.getContext('2d');g.fillStyle='#8a7a66';g.fillRect(4,10,22,54);g.fillRect(86,10,22,54);g.fillStyle='#b8a88e';g.fillRect(6,10,18,52);g.fillRect(88,10,18,52);g.fillStyle='#9c8a70';g.fillRect(0,0,112,14);g.fillStyle='#c9b48a';g.fillRect(2,2,108,9);
   g.fillStyle='#b8412f';g.fillRect(30,14,10,24);g.fillRect(72,14,10,24);g.fillStyle='#e0b04a';g.fillRect(30,36,10,3);g.fillRect(72,36,10,3);g.fillStyle='#1a1008';for(let i=0;i<4;i++){g.fillRect(44+i*6,4,3,3);}g.fillStyle='#e0b04a';g.fillRect(50,0,12,4);
@@ -8693,7 +8693,7 @@ function bagCatOf29(k){const it=ITEMS[k];if(!it)return 'other';
  if(it.tool||it.kit||/_ore$|_bar$|_ingot$|logs$|^raw_|hide$|pelt$|fur$|silk$|^flax$|^wool$|^feather$|^egg$|meat$|^bat_wing$|^sea_shell$|^bull_horn$|^crab_claw$|^sunstone$|^black_bronze$/.test(k))return 'gather';
  return 'other';}
 function bagCatOk29(k){return BAGCAT==='all'||bagCatOf29(k)===BAGCAT;}
-function bagCatBar29(){return '<div class="bcat29" role="tablist">'+BAGCATS29.map(c=>'<button class="bc'+(BAGCAT===c[0]?' on':'')+'" data-a="bcat" data-v="'+c[0]+'">'+c[1]+'</button>').join('')+'</div>';}
+function bagCatBar29(){return bagTools359()+'<div class="bcat29" role="tablist">'+BAGCATS29.map(c=>'<button class="bc'+(BAGCAT===c[0]?' on':'')+'" data-a="bcat" data-v="'+c[0]+'">'+c[1]+'</button>').join('')+'</div>';}
 dlg.addEventListener('click',e=>{const b=e.target&&e.target.closest?e.target.closest('[data-a="bcat"]'):null;if(!b)return;e.stopPropagation();e.preventDefault();BAGCAT=b.getAttribute('data-v')||'all';openBag();},true);
 (function(){const st=document.createElement('style');st.textContent=
 '.bcat29{display:flex;flex-wrap:wrap;gap:2px;margin:0 0 4px}.bcat29 .bc{flex:1 1 auto;min-width:0;padding:2px 5px;font-size:10px;line-height:1.1;background:linear-gradient(#5c4f40,#3e3429);color:#f0e2c0;border:1px solid #15100b;box-shadow:inset 0 0 0 1px #8a7a62;border-radius:4px 4px 2px 2px;white-space:nowrap}'+
@@ -10466,6 +10466,122 @@ function rbKeys358(){const ks=[];try{for(const g in GODGEAR32)for(const it of GO
 for(const k of rbKeys358()){const I=ITEMS[k];if(!I||I.slot==='weapon'||I.slot==='ammo')continue;const def=I.def||0,atk=I.atk||0,acc=I.acc||0;
  const ra=Math.round(0.1*def+0.5*atk+acc),rs=Math.round(0.5*atk+0.04*def);if(ra>0)I.racc=ra;if(rs>0)I.rstr=rs;RB358[k]=[ra,rs];}
 window.__r358=RB358;
+
+// ---- v35.9 a: the Hippodrome gate sits IN the Ilios wall gap (it used to float tiles north of the wall line) ----
+// Finds the city-wall row (tile 2) below/above the spot the old search picked, takes the street gap there,
+// centres the 7-tile gate in it, and closes the rest of the gap with wall tiles so both posts meet the wall flush.
+// The 3-tile opening between the posts stays walkable.
+function hipSnap359(got){try{const [gx,gy]=got,WALLT=2;window.__HIPOLD={x:gx,y:gy};
+  for(let dy=0;dy<=14;dy++)for(const yy of [gy+dy,gy-dy]){let L=-1,R=-1;
+    for(let x=gx;x>=gx-14;x--)if(getT(x,yy)===WALLT){L=x;break;}for(let x=gx;x<=gx+14;x++)if(getT(x,yy)===WALLT){R=x;break;}
+    if(L<0||R<0||R-L-1<7||R-L-1>17)continue;
+    // a real gap: wall on both sides for at least 3 tiles
+    if(![1,2,3].every(k=>getT(L-k+1,yy)===WALLT&&getT(R+k-1,yy)===WALLT))continue;
+    const cx=Math.round((L+R)/2);for(let x=L+1;x<R;x++)if(Math.abs(x-cx)>3){under[yy*MW+x]=getT(x,yy);setT(x,yy,WALLT);}
+    window.__HIPGAP={L,R,y:yy,cx,fill:[]};for(let x=L+1;x<R;x++)if(Math.abs(x-cx)>3)__HIPGAP.fill.push(x);hipFillArt359();return [cx,yy+1];}
+ }catch(e){console.warn('hipSnap',e);}return got;}
+// wall art for the tiles that close the gap (same pieces and scale as the v30 wall)
+function hipFillArt359(){const G=window.__HIPGAP;if(!G||G.art)return;const sh=V5R.ilios_walls_v5;if(!sh||!sh.im.complete||!sh.im.naturalWidth){setTimeout(hipFillArt359,300);return;}
+ const SC=1.25,B=(G.y+1)*T,STR=['wall_straight_a','wall_straight_b','wall_straight_c'];
+ for(const x of G.fill){const f=sh.f[STR[x%3]];const c=document.createElement('canvas');c.width=Math.round(f[2]*SC);c.height=Math.round(f[3]*SC);const g=c.getContext('2d');g.imageSmoothingEnabled=false;g.drawImage(sh.im,f[0],f[1],f[2],f[3],0,0,c.width,c.height);
+  const o={img:c,x:x*T,y:Math.round(B-c.height),sy:B-2,w:c.width,h:c.height};OBJ_ROWS[Math.min(OBJ_ROWS.length-1,Math.floor(o.sy/T))].push(o);}
+ G.art=1;try{for(const x of G.fill){mmx.fillStyle=TILE_COL[WALL]||'#a8401a';mmx.fillRect(x,G.y,1,1);}WM_BASE=null;}catch(e){}}
+
+// ---- v35.9 b: name labels never overlap (each other or the hero's Lv/name tag): lower labels keep their place, a label that would overlap one already placed moves up just above it ----
+var LB359={moved:0};
+function declutter359(L){const placed=[];try{if(!P.dead){const s='Lv'+P.lvl+' '+(P.name||'Hero');const w=s.length*4.6+6;placed.push([P.x-w/2,P.y-46-9,w,11]);}}catch(e){}const idx=[];for(let i=0;i<L.length;i++){const l=L[i];if(l[0]==='hp'||!l[0]||!l[0].width)continue;idx.push(i);}
+ idx.sort((a,b)=>L[b][2]-L[a][2]);LB359.moved=0;
+ for(const i of idx){const l=L[i],w=l[0].width,h=l[0].height;let x0=l[1]-w/2,y=l[2];
+  for(let k=0;k<8;k++){const hit=placed.find(p=>x0<p[0]+p[2]&&x0+w>p[0]&&y-h<p[1]+p[3]&&y>p[1]);if(!hit)break;y=hit[1]-1;LB359.moved++;}
+  l[2]=y;placed.push([x0,y-h,w,h]);}
+ window.__lb359=placed;}
+window.LB359=LB359;window.declutter359=declutter359;
+
+// ---- v35.9 c: hotbar quick slots ----
+// The camera keeps the hero centred in the space ABOVE the bottom HUD bar, so the bar never sits over him.
+var CF359={f:0.55,t:0};
+function camF359(){const tn=performance.now();if(tn-CF359.t>500){CF359.t=tn;try{const h=document.getElementById('hud23');const H=innerHeight||1;if(h&&getComputedStyle(h).display!=='none'&&getComputedStyle(h).visibility!=='hidden'){const top=h.getBoundingClientRect().top;CF359.f=Math.max(0.3,Math.min(0.55,(top/H)/2+0.06));}else CF359.f=0.55;}catch(e){}}return CF359.f;}
+// eligible quick-slot items: consumables only (food, potions, draughts, arrows, bones, kits) + blessings
+function q359cat(k){const it=ITEMS[k]||{};if(it.ammo||/arrow/.test(k))return 'Arrows';if(/potion|draught|elixir|brew/.test(k)||it.mana||it.buff)return 'Potions';if(it.heal)return 'Food';return 'Other';}
+function q359ok(k){const it=ITEMS[k];if(!it||!(P.inv[k]>0))return false;if(it.slot&&it.slot!=='ammo')return false;return !!(it.heal||it.kit||it.buff||it.mana||it.ammo||(typeof BONE_XP!=='undefined'&&BONE_XP[k])||/potion|draught|arrow/.test(k));}
+function q359tile(ic,name,cnt,on){return '<button class="q359t" onclick="'+on+'"><i style="background-image:url('+(ic||'')+')"></i><b>'+name+'</b><em>'+cnt+'</em></button>';}
+q23pick=function(i){if(H23().lock){toast('Quick slots are locked');return;}const cur=H23().q5[i];
+ let h='<h2>Quick slot '+(i+1)+'</h2><p class="q359h"><small>Tap an item to put it in this slot. Long-press a slot on the bar to clear or swap it.</small></p>';
+ const groups={Potions:[],Food:[],Arrows:[],Other:[]};for(const k of Object.keys(P.inv))if(q359ok(k))groups[q359cat(k)].push(k);
+ for(const g in groups){const ks=groups[g].sort((a,b)=>(P.inv[b]-P.inv[a]));if(!ks.length)continue;h+='<div class="q359g">'+g+'</div><div class="q359w">'+ks.map(k=>q359tile(ITEM_ICON[k],ITEMS[k].name,'x'+P.inv[k],"q23set("+i+",'i','"+k+"')")).join('')+'</div>';}
+ try{const bl=Object.keys(BL_BY);if(bl.length)h+='<div class="q359g">Blessings</div><div class="q359w">'+bl.map(id=>q359tile(ITEM_ICON[BL_BY[id].icon||id],BL_BY[id].n,'bless',"q23set("+i+",'b','"+id+"')")).join('')+'</div>';}catch(e){}
+ h+='<div class="row">'+(cur?'<button class="pb" onclick="q23set('+i+',\'i\',\'\')">Clear slot</button>':'')+'<button class="pb" data-a="close">Close</button></div>';openPanel(h);try{dlg.classList.add('q359d');}catch(e){}};
+// long-press: clear / swap / change
+function q359menu(i){if(H23().lock){toast('Quick slots are locked');return;}const s=H23().q5[i];if(!s){q23pick(i);return;}
+ let h='<h2>Quick slot '+(i+1)+'</h2><div class="row"><button class="pb" onclick="q23pick('+i+')">Change</button><button class="pb" onclick="q23set('+i+',\'i\',\'\')">Clear</button></div><p><small>Swap with slot:</small></p><div class="row">';
+ for(let j=0;j<5;j++)if(j!==i)h+='<button class="pb" onclick="q359swap('+i+','+j+')">'+(j+1)+'</button>';h+='</div><div class="row"><button class="pb" data-a="close">Close</button></div>';openPanel(h);}
+function q359swap(i,j){const q=H23().q5;const t=q[i];q[i]=q[j]||null;q[j]=t||null;closePanel();save();q23ui(true);toast('Swapped slots '+(i+1)+' and '+(j+1));}
+// arrows in a quick slot: tap equips them as ammo
+{const _u=q23use;q23use=function(i){const s=H23().q5[i];if(s&&s.t==='i'&&ITEMS[s.k]&&ITEMS[s.k].ammo){if(!(P.inv[s.k]>0)){toast('None left');return;}P.eq.ammo=s.k;toast('Arrows: '+ITEMS[s.k].name);save();q23ui(true);return;}return _u.apply(this,arguments);};}
+// rebind long-press to the clear/swap menu
+function q359bind(){const hp=document.getElementById('hud23');if(!hp||hp.__q359)return false;hp.__q359=1;const q=hp.querySelectorAll('.q5');
+ q.forEach((e,i)=>{const n=e.cloneNode(true);e.replaceWith(n);let t0=0,lp=null;n.addEventListener('pointerdown',ev=>{ev.stopPropagation();t0=performance.now();lp=setTimeout(()=>{lp=null;t0=-1;q359menu(i);},550);});
+  n.addEventListener('pointerup',ev=>{ev.stopPropagation();if(lp){clearTimeout(lp);lp=null;if(t0>=0)q23use(i);}});n.addEventListener('pointercancel',()=>{if(lp){clearTimeout(lp);lp=null;}});n.addEventListener('contextmenu',ev=>ev.preventDefault());});
+ q23last='';q23ui(true);return true;}
+{const iv=setInterval(()=>{try{if(q359bind())clearInterval(iv);}catch(e){}},300);}
+(function(){const st=document.createElement('style');st.textContent=
+ '#hud23 .q5.emp{border:2px dashed #e0b04a;background:#3a2414;box-shadow:inset 0 0 6px #e0b04a55}#hud23 .q5.emp::after{content:"+";color:#ffd75a;font:bold 20px monospace;line-height:30px;text-shadow:0 0 4px #000}'+
+ '#hud23 .q5{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}'+
+ '.q359w{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px;margin:4px 0 8px}.q359g{font:bold 12px monospace;color:#ffd75a;margin-top:6px}'+
+ '.q359t{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 4px;min-height:74px;border:2px solid #b88850;border-radius:8px;background:#2a1914;color:#f4e6c8;font:11px monospace;cursor:pointer}'+
+ '.q359t i{width:32px;height:32px;background:center/32px 32px no-repeat;image-rendering:pixelated}.q359t b{font-weight:normal;line-height:1.1;text-align:center;max-width:100%;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}.q359t em{font-style:normal;color:#ffd75a}';
+ document.head.appendChild(st);})();
+window.__q359={camF359,q359ok,q359menu,q359swap};
+
+// ---- v35.9 d: blessings run on MAGIC (MP), not Favor ----
+// Turning a blessing on costs its activation MP (15% of max MP, as before) and while on it drains MP every second:
+//   drain/s = blessing drain rate x 0.6% of max MP  (Tier I ~0.3-0.4%/s, Tier II ~0.7-0.9%/s of max MP).
+// Natural MP regen pauses while any blessing is on; mana potions still work.
+// Not enough MP -> the blessing won't start; MP runs dry -> blessings end. Favor (the old meter) is left untouched.
+// Max MP grows with level up to Lv 100: 1.5 x (20 + 6 x (level-1)) -> 30 at Lv1, 921 at Lv100; existing saves clamp to it on load.
+maxMp=function(){return Math.round(1.5*(20+6*(Math.min(100,Math.max(1,P.lvl))-1)));};
+var BM359={k:0.006,ended:0};
+function blDrain359(id){const b=BL_BY[id];return b?b.dr*BM359.k*maxMp():0;}
+function blCost359(){return MPC.bless();}
+{const _t=blTick;blTick=function(dt){const s=blS(),f0=s.f;s.f=Math.max(1,favMax());const r=_t.apply(this,arguments);s.f=f0;
+  try{if(s.on.length&&BM359.last!=null&&P.mp>BM359.last&&!BM359.pot)P.mp=BM359.last;BM359.pot=0;if(s.on.length&&!P.dead){let d=0;for(const id of s.on)d+=blDrain359(id);d*=dt;if((P.mp||0)<d){P.mp=0;s.on=[];BM359.ended++;toast('Out of magic: your blessings fade');log('Magic spent: blessings ended.');blHud(true);}else P.mp-=d;}BM359.last=s.on.length?P.mp:null;}catch(e){}return r;};}
+// natural MP regen pauses while a blessing is on (potions still restore MP)
+{const _ui=useItem;useItem=function(){BM359.pot=1;return _ui.apply(this,arguments);};}
+// god powers: MP cost only (no Favor taken)
+{const _u=ultUse;ultUse=function(id){const s=blS(),f0=s.f;s.f=Math.max(s.f,9999);try{return _u.apply(this,arguments);}finally{s.f=f0;}};}
+// blessing HUD chip: show MP, not Favor
+{const _h=blHud;blHud=function(force){const r=_h.apply(this,arguments);try{const el=$('favb');if(!el)return r;const s=blS(),mx=maxMp(),v=Math.floor(P.mp||0);el.querySelector('i').style.width=(100*v/mx)+'%';el.querySelector('i').style.background='linear-gradient(90deg,#4a8fff,#9fd0ff)';
+  el.querySelector('span').textContent=s.on.map(id=>BL_BY[id].ic).join('')+' MP '+v+'/'+mx;}catch(e){}return r;};}
+// blessings panel: cost on every button, MP bar instead of Favor
+{const _o=openBless;openBless=function(){const r=_o.apply(this,arguments);try{const c=blCost359();
+  dlg.querySelectorAll('[data-a="blsel"]').forEach(b=>{const id=b.dataset.v;if(!BL_BY[id]||b.querySelector('.mp359'))return;const d=blDrain359(id);const sp=document.createElement('small');sp.className='mp359';sp.textContent=c+' MP · '+(Math.round(d*10)/10)+'/s';sp.style.cssText='display:block;color:'+((P.mp||0)>=c||blS().on.includes(id)?'#9fd0ff':'#ff8a7a')+';font-size:9px;line-height:1.1';b.appendChild(sp);b.style.height='62px';});
+  const cells=dlg.querySelectorAll('h2 + div > div');if(cells[1]){const mx=maxMp(),v=Math.floor(P.mp||0);cells[1].innerHTML='Magic <b style="color:#9fd0ff">'+v+'/'+mx+'</b> <small style="display:block;margin:1px 0 4px;line-height:1.3">Blessings cost '+c+' MP to start and drain MP while on</small><div style="height:7px;background:#0007;border-radius:4px;margin:2px 0"><div style="height:7px;width:'+Math.round(100*v/mx)+'%;background:#6aa8ff;border-radius:4px"></div></div>';cells[1].classList.add('mp359c');}
+ }catch(e){console.warn('bl359',e);}return r;};}
+// existing saves: clamp MP to the level curve once
+setTimeout(()=>{try{const mx=maxMp();if(!(P.mp>=0)||P.mp>mx)P.mp=mx;}catch(e){}},500);
+window.__m359={BM359,blDrain359,blCost359};
+
+// ---- v35.9 e: bag sort (type / tier / newest) + search box, on top of the existing category tabs ----
+var BS359={mode:'type',q:'',n:0};try{const v=JSON.parse(localStorage.getItem('troy_bs359')||'{}');if(v.mode)BS359.mode=v.mode;}catch(e){}
+function acq359(){const v=V();v.acq359=v.acq359||{};return v.acq359;}
+{const _g=giveItem;giveItem=function(k){const r=_g.apply(this,arguments);try{if(r){const a=acq359();a[k]=Date.now();}}catch(e){}return r;};}
+function tierRank359(k){const it=ITEMS[k]||{};let t=0;try{const g=gTier354(it);t=['Common','Uncommon','Rare','Epic','Legend','Legendary','Mythic'].indexOf(g[0]);}catch(e){}return (t<0?0:t)*1000+(it.req||0);}
+function bagSort359(keys){if(BS359.mode==='tier')keys.sort((a,b)=>tierRank359(b)-tierRank359(a)||(ITEMS[a].name>ITEMS[b].name?1:-1));
+ else if(BS359.mode==='new'){const A=acq359();keys.sort((a,b)=>(A[b]||0)-(A[a]||0));}}
+function bagFind359(k){const q=BS359.q.trim().toLowerCase();if(!q)return true;const it=ITEMS[k]||{};return (it.name||k).toLowerCase().includes(q)||(it.slot||'').includes(q)||(it.wtype||'').toLowerCase().includes(q);}
+function bagTools359(){const o=(m,l)=>'<button class="bs359'+(BS359.mode===m?' on':'')+'" data-a="bs359" data-v="'+m+'">'+l+'</button>';
+ return '<div class="bt359"><input id="bq359" type="search" placeholder="Search bag" value="'+BS359.q.replace(/"/g,'&quot;')+'" autocomplete="off"><span>Sort</span>'+o('type','Type')+o('tier','Tier')+o('new','Newest')+'</div>';}
+dlg.addEventListener('click',e=>{const b=e.target&&e.target.closest?e.target.closest('[data-a="bs359"]'):null;if(!b)return;e.stopPropagation();e.preventDefault();BS359.mode=b.dataset.v;try{localStorage.setItem('troy_bs359',JSON.stringify({mode:BS359.mode}));}catch(e){}openBag();},true);
+dlg.addEventListener('input',e=>{if(!e.target||e.target.id!=='bq359')return;BS359.q=e.target.value;clearTimeout(BS359.t);BS359.t=setTimeout(()=>{const pos=e.target.selectionStart;openBag();const i=document.getElementById('bq359');if(i){i.focus();try{i.setSelectionRange(pos,pos);}catch(e){}}},250);},true);
+(function(){const st=document.createElement('style');st.textContent='.bt359{display:flex;gap:3px;align-items:center;margin:0 0 4px}.bt359 input{flex:1 1 90px;min-width:60px;height:26px;font:12px monospace;padding:0 6px;border:2px solid #b88850;border-radius:6px;background:#1a1008;color:#f4e6c8}.bt359 span{font-size:10px;color:#d9c49a}.bs359{height:26px;padding:0 7px;font-size:11px;border:2px solid #1a1008;border-radius:6px;background:#3e3429;color:#f0e2c0}.bs359.on{background:#6b4a1a;border-color:#ffd75a;color:#ffe9a0}';document.head.appendChild(st);})();
+window.__b359={BS359,bagSort359,bagFind359};
+
+// ---- v35.9 f: boss balance from the v35.9 beatability sims (bot: 0.4s reaction, misses 15% of dodges, Lv100, skills 90) ----
+// Legend god fights that no build could win get softer HP / hit scaling; Legend stays one life, no potions.
+// Multipliers apply on top of the Legend scaling (boss HP 4x Normal, hits x1.15).
+var LT359={apollo:{hp:1,atk:1},poseidon:{hp:0.9,atk:0.95},hades:{hp:0.65,atk:0.75},ares:{hp:0.9,atk:0.9},athena:{hp:0.5,atk:0.55},zeus:{hp:0.45,atk:0.55}};
+{const _iw=instWave;instWave=function(){const r=_iw.apply(this,arguments);try{if(INST.meta&&INST.meta.leg){for(const m of mobs)if(m.inst&&m.alive&&m.leg35&&!m.lt359&&m.b31&&!m.add31){m.lt359=1;const g=String(m.type||'').replace('b31_','');const t=LT359[g];if(t){m.maxHp=Math.round(m.maxHp*t.hp);m.hp=m.maxHp;m.atk=Math.round(m.atk*t.atk);}}}}catch(e){}return r;};}
+window.LT359=LT359;
 
 //@@HIP6END@@
 // ---------- v22.5: music batch 3 wiring (interiors, hippodrome, chariot mount loops, town/hub market ambience) ----------
